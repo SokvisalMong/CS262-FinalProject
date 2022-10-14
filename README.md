@@ -7,7 +7,16 @@
 - Sokvisal Mong
 
 ## How to build tailwindcss
-```npm run dev```
+
+Build dependencies
+
+```./vendor/bin/sail npm ci```
+
+Run Vite?
+
+```./vendor/bin/sail npm run dev```
+
+
 
 
 
