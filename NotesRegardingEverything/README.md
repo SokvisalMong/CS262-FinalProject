@@ -110,3 +110,9 @@ To connect to the page, go to `localhost`
 To open the file directory on VS Code
 
 `code .`
+
+Need to
+
+ `./vendor/bin/sail`
+
+before creating commands
