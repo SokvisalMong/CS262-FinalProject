@@ -6,9 +6,12 @@
     @vite('resources/css/app.css')
     <title>Document</title>
 </head>
-<body class="mx-40 font-sans">
-    @include('layouts.navbar')
-    @yield('content')
-    @include('layouts.footer')
+<body class="font-sans bg-gray-500">
+    
+    <div class="flex">
+        @include('dashboard.dashsidebar')
+        @yield('content')
+    </div>
+
 </body>
 </html>

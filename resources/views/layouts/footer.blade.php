@@ -1,10 +1,11 @@
 {{-- footer --}}
-<footer class="text-center text-white bg-gray-800">
+{{-- fixed inset-x-0 bottom-0 allows footer to stay bottom of the page if the content doesnt fill the page --}}
+<footer class="text-center text-white bg-gray-800 fixed inset-x-0 bottom-0 mx-40">
     {{-- github logo and text --}}
     <div class="py-9 flex justify-center">
         {{-- logo --}}
       <div class="mr-5">
-        <a href="" class="text-white">
+        <a href="https://github.com/SokvisalMong/CS262-FinalProject" class="text-white">
             <svg class="h-8 w-8"
             aria-hidden="true"
             focusable="false"

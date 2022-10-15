@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [PagesController::class, 'home']);
+
+Route::get('/signin', [PagesController::class, 'signin']);
+
+Route::get('/dashboard', [PagesController::class, 'dashboard']);
