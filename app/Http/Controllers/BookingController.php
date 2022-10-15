@@ -23,6 +23,6 @@ class BookingController extends Controller
     public function ShowBooking(){
         $booking_db = DB::select("select * from bookings");
 
-        return view('', ["v_bookings" => $booking_db]);
+        return view('dataview.booking', ["v_bookings" => $booking_db]);
     }
 }

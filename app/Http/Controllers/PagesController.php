@@ -6,19 +6,19 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function Home(){
+    public function Home() {
         return view('home');
     }
 
-    public function SignIn(){
+    public function SignIn() {
         return view('signin');
     }
 
-    public function Dashboard(){
+    public function Dashboard() {
         return view('dashboard.dashboard');
     }
 
-    public function RestaurantList(){
+    public function RestaurantList() {
         return view('restaurantlist');
     }
 }
