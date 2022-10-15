@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\UserController;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
 /*
@@ -22,3 +26,11 @@ Route::get('/SignIn', [PagesController::class, 'SignIn']);
 Route::get('/Dashboard', [PagesController::class, 'Dashboard']);
 
 Route::get('/RestaurantList', [PagesController::class, 'RestaurantList']);
+
+Route::get('/Restaurant', [RestaurantController::class, 'ShowRestaurant']);
+
+Route::get('/User', [UserController::class, 'ShowUser']);
+
+Route::get('/Booking', [BookingController::class, 'ShowBooking']);
+
+Route::get('/Admin', [AdminController::class, 'ShowAdmin']);
