@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function AddUser(Request $request){
+    public function AddUser(Request $request) {
         $user = new User();
 
         $user->user_email     = $request->user_email;
@@ -21,9 +21,13 @@ class UserController extends Controller
         return back()->with('success', 'Data is inserted');
     }
 
-    public function ShowUser(){
+    public function ShowUser() {
         $user_db = DB::select("select * from users");
 
         return view('dataview.user', ["v_users" => $user_db]);
+    }
+
+    public function Register() {
+        return view('users.register');
     }
 }

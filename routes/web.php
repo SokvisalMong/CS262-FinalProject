@@ -34,3 +34,5 @@ Route::get('/User', [UserController::class, 'ShowUser']);
 Route::get('/Booking', [BookingController::class, 'ShowBooking']);
 
 Route::get('/Admin', [AdminController::class, 'ShowAdmin']);
+
+Route::get('/Register', [UserController::class, 'Register']);
