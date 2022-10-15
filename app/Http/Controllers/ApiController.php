@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
@@ -10,7 +11,7 @@ class ApiController extends Controller
         // Query Database
         $admin = DB::select("select * from admins by ord_id desc");
         //JSON
-        return response()‐>json(
+        return response()->json(
             [
                 "admins" => $admin
             ],200);
@@ -19,7 +20,7 @@ class ApiController extends Controller
         // Query Database
         $restaurant = DB::select("select * from restaurants by ord_id desc");
         //JSON
-        return response()‐>json(
+        return response()->json(
             [
                 "restaurants" => $restaurant
             ],200);
@@ -28,7 +29,7 @@ class ApiController extends Controller
         // Query Database
         $booking = DB::select("select * from bookings by ord_id desc");
         //JSON
-        return response()‐>json(
+        return response()->json(
             [
                 "bookings" => $booking
             ],200);
@@ -37,7 +38,7 @@ class ApiController extends Controller
         // Query Database
         $user = DB::select("select * from users by ord_id desc");
         //JSON
-        return response()‐>json(
+        return response()->json(
             [
                 "users" => $user
             ],200);
