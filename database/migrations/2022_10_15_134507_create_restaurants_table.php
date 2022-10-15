@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->integer('restaurant_id')->autoIncrement();
+
             $table->string('restaurant_name', 100);
             $table->set('payment_options', ['Cash', 'Visa', 'Mastercard', 'ABA']);
             $table->string('hours_of_operation', 100);
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('restuarant_email', 100);
             $table->integer('price_range_lower');
             $table->integer('price_range_higher');
+
             $table->timestamps();
         });
     }
