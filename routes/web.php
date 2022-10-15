@@ -15,11 +15,7 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', [PagesController::class, 'home']);
+Route::get('/', [PagesController::class, 'home']);
 
 Route::get('/signin', [PagesController::class, 'signin']);
 
