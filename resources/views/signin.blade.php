@@ -1,4 +1,9 @@
 @extends('layouts.master')
+
+@section('title')
+{{'Sign In'}}
+@endsection
+
 @section('content')
 <div class=" max-w-xs mx-auto mt-48">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 ">
