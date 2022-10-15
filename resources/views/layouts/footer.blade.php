@@ -5,7 +5,7 @@
     <div class="py-9 flex justify-center">
         {{-- logo --}}
       <div class="mr-5">
-        <a href="" class="text-white">
+        <a href="https://github.com/SokvisalMong/CS262-FinalProject" class="text-white">
             <svg class="h-8 w-8"
             aria-hidden="true"
             focusable="false"
