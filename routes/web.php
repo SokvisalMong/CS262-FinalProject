@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::get('/home', [PagesController::class, 'home']);
 Route::get('/signin', [PagesController::class, 'signin']);
 
 Route::get('/dashboard', [PagesController::class, 'dashboard']);
+
+Route::get('/restaurantlist', [PagesController::class, 'restaurantlist']);
