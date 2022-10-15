@@ -2,7 +2,7 @@
 <div class="flex-col text-white bg-gray-500 py-10">
     {{-- big text --}}
     <div class="font-bold text-center text-6xl py-5"> 
-        Find your table for any occasion
+        Book your table for any occasion
     </div>
     {{-- the second part --}}
     <div class="text-center">
@@ -18,3 +18,4 @@
         </div>
     </div>
 </div>
+
