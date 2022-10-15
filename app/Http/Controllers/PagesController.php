@@ -21,4 +21,8 @@ class PagesController extends Controller
     public function RestaurantList() {
         return view('restaurantlist');
     }
+
+    public function Register() {
+        return view('users.register');
+    }
 }

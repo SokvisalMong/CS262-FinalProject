@@ -17,7 +17,7 @@ class UserController extends Controller
         $user->user_lastname  = $request->user_lastname;
         $user->user_mobile    = $request->user_mobile;
 
-        $user-> save();
+        $user->save();
         return back()->with('success', 'Data is inserted');
     }
 
@@ -25,9 +25,5 @@ class UserController extends Controller
         $user_db = DB::select("select * from users");
 
         return view('dataview.user', ["v_users" => $user_db]);
-    }
-
-    public function Register() {
-        return view('users.register');
     }
 }

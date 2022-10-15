@@ -27,12 +27,12 @@ Route::get('/Dashboard', [PagesController::class, 'Dashboard']);
 
 Route::get('/RestaurantList', [PagesController::class, 'RestaurantList']);
 
-Route::get('/Restaurant', [RestaurantController::class, 'ShowRestaurant']);
+Route::get('/Register', [PagesController::class, 'Register']);
 
-Route::get('/User', [UserController::class, 'ShowUser']);
+Route::get('/Show/Restaurant', [RestaurantController::class, 'ShowRestaurant']);
 
-Route::get('/Booking', [BookingController::class, 'ShowBooking']);
+Route::get('/Show/User', [UserController::class, 'ShowUser']);
 
-Route::get('/Admin', [AdminController::class, 'ShowAdmin']);
+Route::get('/Show/Booking', [BookingController::class, 'ShowBooking']);
 
-Route::get('/Register', [UserController::class, 'Register']);
+Route::get('/Show/Admin', [AdminController::class, 'ShowAdmin']);
