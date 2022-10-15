@@ -20,9 +20,12 @@ return new class extends Migration
             //         ->cascadeOnUpdate()
             //         ->cascadeOnDelete();
             $table->foreign('booking_id')->references('restaurant_id')->on('restaurants');
-            $table->string('booking_status', 100);
-            $table->string('booking_date', 100);
+
+            $table->enum('booking_status', ['Active', 'Canceled', 'Completed']);
+            $table->date('booking_date');
+            $table->time('booking_time');
             $table->integer('party_size');
+
             $table->timestamps();
         });
     }
