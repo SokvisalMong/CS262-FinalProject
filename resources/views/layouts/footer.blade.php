@@ -1,5 +1,6 @@
 {{-- footer --}}
-<footer class="text-center text-white bg-gray-800">
+{{-- fixed inset-x-0 bottom-0 allows footer to stay bottom of the page if the content doesnt fill the page --}}
+<footer class="text-center text-white bg-gray-800 fixed inset-x-0 bottom-0">
     {{-- github logo and text --}}
     <div class="py-9 flex justify-center">
         {{-- logo --}}

@@ -8,7 +8,6 @@
 </head>
 <body class="mx-20 font-sans">
     @include('layouts.navbar')
-    @include('layouts.hero')
     @yield('content')
     @include('layouts.footer')
 </body>
