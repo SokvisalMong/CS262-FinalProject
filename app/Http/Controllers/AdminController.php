@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function AddAdmin(Request $request){
-        $admin = new Booking();
+        $admin = new Admin();
         $admin-> admin_username = $request->admin_username;
         $admin-> admin_email = $request->admin_email;
         $admin-> admin_password = $request->admin_password;
