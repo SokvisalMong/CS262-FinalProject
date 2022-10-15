@@ -21,7 +21,7 @@ return new class extends Migration
                     ->cascadeOnDelete();
             $table->string('booking_status', 100);
             $table->string('booking_date', 100);
-            $table->int('party_size');
+            $table->integer('party_size');
             $table->timestamps();
         });
     }
