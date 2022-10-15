@@ -3,23 +3,35 @@
 @section('content')
 
 <div>
-    <table class="table">
+    <table class="table-auto">
         <thead>
-            <th scope="col">ID</th>
-            <th scope="col">Email</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Mobile</th>
-            <th scope="col">Password</th>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>First</th>
+                <th>Last</th>
+                <th>Mobile</th>
+                <th>Password</th>
+            </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>0</td>
+                <td>dummy@mail.com</td>
+                <td>Dummy</td>
+                <td>Dum</td>
+                <td>012 345 678</td>
+                <td>dummy123</td>
+            </tr>
             @foreach ($v_users as $item)
-                <td scope="row">{{$item->user_id}}</td>
-                <td scope="row">{{$item->user_email}}</td>
-                <td scope="row">{{$item->user_firstname}}</td>
-                <td scope="row">{{$item->user_lastname}}</td>
-                <td scope="row">{{$item->user_mobile}}</td>
-                <td scope="row">{{$item->user_password}}</td>
+                <tr>
+                    <td>{{$item->user_id}}</td>
+                    <td>{{$item->user_email}}</td>
+                    <td>{{$item->user_firstname}}</td>
+                    <td>{{$item->user_lastname}}</td>
+                    <td>{{$item->user_mobile}}</td>
+                    <td>{{$item->user_password}}</td>
+                </tr>
             @endforeach
         </tbody>
     </table>

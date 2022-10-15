@@ -3,31 +3,45 @@
 @section('content')
 
 <div>
-    <table class="table">
+    <table class="table-auto">
         <thead>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Payment</th>
-            <th scope="col">HOO</th>
-            <th scope="col">Cuisine</th>
-            <th scope="col">Dress</th>
-            <th scope="col">Site</th>
-            <th scope="col">Num</th>
-            <th scope="col">Email</th>
-            <th scope="col">Price</th>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Payment</th>
+                <th>HOO</th>
+                <th>Cuisine</th>
+                <th>Dress</th>
+                <th>Site</th>
+                <th>Num</th>
+                <th>Email</th>
+                <th>Price</th>
+            </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>0</td>
+                <td>dummy</td>
+                <td>Cash</td>
+                <td>12-12</td>
+                <td>Khmer</td>
+                <td>Casual</td>
+                <td>www.example.com</td>
+                <td>012 345 678</td>
+                <td>dummy@mail.com</td>
+                <td>100 - 200</td>
+            </tr>
             @foreach ($v_restaurants as $item)
-                <td scope="row">{{$item->restaurant_id}}</td>
-                <td scope="row">{{$item->restaurant_name}}</td>
-                <td scope="row">{{$item->payment_options}}</td>
-                <td scope="row">{{$item->hours_of_operation}}</td>
-                <td scope="row">{{$item->cuisines}}</td>
-                <td scope="row">{{$item->dress_code}}</td>
-                <td scope="row">{{$item->restaurant_website}}</td>
-                <td scope="row">{{$item->restaurant_mobile}}</td>
-                <td scope="row">{{$item->restaurant_email}}</td>
-                <td scope="row">{{$item->price_range_lower}} - {{$item->price_range_higher}}</td>
+                <td>{{$item->restaurant_id}}</td>
+                <td>{{$item->restaurant_name}}</td>
+                <td>{{$item->payment_options}}</td>
+                <td>{{$item->hours_of_operation}}</td>
+                <td>{{$item->cuisines}}</td>
+                <td>{{$item->dress_code}}</td>
+                <td>{{$item->restaurant_website}}</td>
+                <td>{{$item->restaurant_mobile}}</td>
+                <td>{{$item->restaurant_email}}</td>
+                <td>{{$item->price_range_lower}} - {{$item->price_range_higher}}</td>
             @endforeach
         </tbody>
     </table>
