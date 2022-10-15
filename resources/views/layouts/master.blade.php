@@ -6,7 +6,7 @@
     @vite('resources/css/app.css')
     <title>Document</title>
 </head>
-<body class="mx-20 font-sans">
+<body class="mx-40 font-sans">
     @include('layouts.navbar')
     @yield('content')
     @include('layouts.footer')
