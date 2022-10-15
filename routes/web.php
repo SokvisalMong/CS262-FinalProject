@@ -15,10 +15,10 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 |
 */
 
-Route::get('/', [PagesController::class, 'home']);
+Route::get('/', [PagesController::class, 'Home']);
 
-Route::get('/signin', [PagesController::class, 'signin']);
+Route::get('/SignIn', [PagesController::class, 'SignIn']);
 
-Route::get('/dashboard', [PagesController::class, 'dashboard']);
+Route::get('/Dashboard', [PagesController::class, 'Dashboard']);
 
-Route::get('/restaurantlist', [PagesController::class, 'restaurantlist']);
+Route::get('/RestaurantList', [PagesController::class, 'RestaurantList']);
