@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('hours_of_operation', 100);
             $table->set('cuisines', ['Khmer', 'Western', 'Chinese', 'Vietnamese', 'Internatonal']);
             $table->set('dress_code', ['Casual', 'Business Casual', 'Casual Elegant', 'Formal', 'Jacket']);
-            $table->string('restuarant_website', 500);
-            $table->string('restuarant_mobile', 100);
-            $table->string('restuarant_email', 100);
+            $table->string('restaurant_website', 500);
+            $table->string('restaurant_mobile', 100);
+            $table->string('restaurant_email', 100);
             $table->integer('price_range_lower');
             $table->integer('price_range_higher');
 
