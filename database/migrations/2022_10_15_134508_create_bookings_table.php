@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
-            $table->interger('booking_id')->autoIncrement();
+            $table->integer('booking_id')->autoIncrement();
             $table->foreignId('restaurant_id')
                     ->constrained('restaurants')
                     ->cascadeOnUpdate()
