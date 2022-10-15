@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->interger('booking_id')->autoIncrement();
-            $table->foreign('restuarant_id')
-              ->references('booking_id')->on('restuarants')->onDelete('cascade');
+            $table->foreignId('restaurant_id')
+                    ->constrained('restaurants')
+                    ->cascadeOnUpdate()
+                    ->cascadeOnDelete();
             $table->string('booking_status', 100);
             $table->string('booking_date', 100);
             $table->int('party_size');
