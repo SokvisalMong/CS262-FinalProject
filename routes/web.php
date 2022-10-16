@@ -59,7 +59,7 @@ Route::domain('dev.localhost')->group(function() {
 
         Route::get('/dashboard/adduser', [UserController::class, 'AddUser']);
         
-        Route::get('/dashboard/addrestaurant', [AdminController::class, 'AddRestaurant']);
+        Route::get('/dashboard/addrestaurant', [RestaurantController::class, 'AddRestaurant']);
 
         Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
     });
