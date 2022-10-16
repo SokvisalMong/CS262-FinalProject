@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\UserController;
+use App\Models\Admin;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
 /*
@@ -51,6 +52,8 @@ Route::domain('dev.localhost')->group(function() {
         Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
 
         Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);    
+
+        Route::get('/dashboard/addadmin', [AdminController::class, 'AddAdmin']);
 
         Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
     });
