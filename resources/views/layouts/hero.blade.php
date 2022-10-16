@@ -13,7 +13,7 @@
         {{-- let's go button --}}
         <div class="py-5">
             <button class="bg-blue-500 hover:bg-blue-700 text-white py-4 px-8 rounded-lg">
-                <a href="/restaurantlist">Let's go</a>
+                <a href="/RestaurantList">Let's go</a>
             </button>
         </div>
     </div>
