@@ -71,6 +71,7 @@
                 </td>
             </tr>
             @foreach ($v_restaurants as $item)
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <td>{{$item->restaurant_id}}</td>
                 <td>{{$item->restaurant_name}}</td>
                 <td>{{$item->payment_options}}</td>
@@ -81,6 +82,7 @@
                 <td>{{$item->restaurant_mobile}}</td>
                 <td>{{$item->restaurant_email}}</td>
                 <td>{{$item->price_range_lower}} - {{$item->price_range_higher}}</td>
+            </tr>
             @endforeach
         </tbody>
     </table>
