@@ -8,18 +8,13 @@
     <div class="flex">
         @auth
         <div class="ml-2">
-            <form class="inline" method="POST" action="/manage">
-            @csrf
-            <button type="submit" class="bg-white hover:bg-grey-100 text-black py-1 px-2 rounded">
-                {{auth()->user()->user_email}}
-            </button>
-            </form>
+            <a href="/manage" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded">{{auth()->user()->user_email}}</a>
         </div>
-       
+        
         <div class="ml-2">
             <form class="inline" method="POST" action="/logout">
             @csrf
-            <button type="submit" class="bg-white hover:bg-grey-100 text-black py-1 px-2 rounded">
+            <button type="submit" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded">
                 Sign Out
             </button>
             </form>
