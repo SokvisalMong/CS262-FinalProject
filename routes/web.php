@@ -21,13 +21,15 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 
 Route::get('/', [PagesController::class, 'Home']);
 
-Route::get('/SignIn', [PagesController::class, 'SignIn']);
-
 Route::get('/Dashboard', [PagesController::class, 'Dashboard']);
 
 Route::get('/RestaurantList', [PagesController::class, 'RestaurantList']);
 
 Route::get('/Register', [PagesController::class, 'Register']);
+
+Route::get('/SignIn', [PagesController::class, 'SignIn']);
+
+
 
 Route::get('/Show/Restaurant', [RestaurantController::class, 'ShowRestaurant']);
 
