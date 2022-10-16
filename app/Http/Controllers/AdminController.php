@@ -16,7 +16,7 @@ class AdminController extends Controller
         $admin->admin_password = $request->admin_password;
 
         $admin-> save();
-        return back()->with('success', 'Data is inserted');
+        return view()->with('success', 'Data is inserted');
     }
 
     public function ShowAdmin(){
