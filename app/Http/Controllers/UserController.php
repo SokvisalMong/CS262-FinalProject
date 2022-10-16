@@ -37,7 +37,23 @@ class UserController extends Controller
         return redirect('/')->with('message', 'User created and logged in.');
     }
 
-    // Logs the user out
+    // Logs the user in with the provided email and password
+    public function LogIn(Request $request) {
+        $formFields = $request->validate([
+            'user_email' => ['required', 'email'],
+            'user_password' => 'required'
+        ]);
+        
+        if(auth()->attempt(['user_email' => $request->user_email, 'password' => $request->user_password])) {
+            //if(auth()->attempt($formFields)) {
+                $request->session()->regenerate();
+                
+                return redirect('/')->with('message', 'You are now logged in.');
+            };
+            
+        return back()->withErrors(['user_email' => 'Invalid Credentials'])->onlyInput('user_email');
+    }
+        // Logs the user out
     public function LogOut(Request $request) {
         auth()->logout();
 
@@ -46,25 +62,8 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'You have been logged out.');
     }
-
-    // Logs the user in with the provided email and password
-    public function LogIn(Request $request) {
-        $formFields = $request->validate([
-            'user_email' => ['required', 'email'],
-            'user_password' => 'required'
-        ]);
-
-        if(auth()->attempt(['user_email' => $request->user_email, 'password' => $request->user_password])) {
-        //if(auth()->attempt($formFields)) {
-            $request->session()->regenerate();
-
-            return redirect('/')->with('message', 'You are now logged in.');
-        };
-
-        return back()->withErrors(['user_email' => 'Invalid Credentials'])->onlyInput('user_email');
-    }
-
-    // Returns all data in the 'users' table
+        
+        // Returns all data in the 'users' table
     public function ShowUser() {
         $user_db = DB::select("select * from users");
 
