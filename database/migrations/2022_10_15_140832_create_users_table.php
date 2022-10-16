@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('user_firstname', 100)->nullable();
             $table->string('user_lastname', 100)->nullable();
             $table->string('user_mobile', 100);
+
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
-            
             $table->timestamps();
         });
     }
