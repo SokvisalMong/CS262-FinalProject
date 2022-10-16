@@ -33,10 +33,10 @@ Route::get('/signin', [PagesController::class, 'SignIn']);
 
 
 
-Route::get('/show/restaurant', [RestaurantController::class, 'ShowRestaurant']);
+Route::get('/dashboard/restaurant', [RestaurantController::class, 'ShowRestaurant']);
 
-Route::get('/show/user', [UserController::class, 'ShowUser']);
+Route::get('/dashboard/user', [UserController::class, 'ShowUser']);
 
-Route::get('/show/booking', [BookingController::class, 'ShowBooking']);
+Route::get('/dashboard/booking', [BookingController::class, 'ShowBooking']);
 
-Route::get('/show/admin', [AdminController::class, 'ShowAdmin']);
+Route::get('/dashboard/admin', [AdminController::class, 'ShowAdmin']);
