@@ -54,7 +54,8 @@ class UserController extends Controller
             'user_password' => 'required'
         ]);
 
-        if(auth()->attempt($formFields)) {
+        if(auth()->attempt(['user_email' => $request->user_email, 'password' => $request->user_password])) {
+        //if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
             return redirect('/')->with('message', 'You are now logged in.');
