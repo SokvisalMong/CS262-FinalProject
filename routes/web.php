@@ -23,7 +23,7 @@ Route::get('/', [PagesController::class, 'Home']);
 
 Route::get('/dashboard', [PagesController::class, 'Dashboard']); 
 
-Route::get('/homedashboard', [PagesController::class, 'HomeDash']);
+
 
 Route::get('/restaurantlist', [PagesController::class, 'RestaurantList']);
 

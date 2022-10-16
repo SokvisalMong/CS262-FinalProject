@@ -14,10 +14,6 @@ class PagesController extends Controller
         return view('dashboard.dashboard');
     }
 
-    public function HomeDash(){
-        return view('dashboard.homedash');
-    }
-
     public function RestaurantList() {
         return view('restaurantlist');
     }
