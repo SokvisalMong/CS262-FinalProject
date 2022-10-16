@@ -30,6 +30,10 @@ Route::get('/get/ShowBooking', [ApiController::class, 'ShowBooking']);
 Route::get('/get/ShowUser', [ApiController::class, 'ShowUser']);
 
 Route::post('/post/CreateUser', [UserController::class, 'AddUser']);
+
+Route::post('/post/CreateUser', [UserController::class, 'AddUser']);
+
+Route::post('/post/CreateAdmin', [AdminController::class, 'AddAdmin']);
 // // FULL URL Call http://127.0.0.1:8000/api/do/orderdel/65
 // Route::get('/do/orderdel/{id}', [ApiController::class, 'orderdel']);
 
