@@ -32,7 +32,6 @@ Route::get('/register', [PagesController::class, 'Register']);
 Route::get('/signin', [PagesController::class, 'SignIn']);
 
 
-
 Route::get('/dashboard/restaurant', [RestaurantController::class, 'ShowRestaurant']);
 
 Route::get('/dashboard/user', [UserController::class, 'ShowUser']);
@@ -44,3 +43,5 @@ Route::get('/dashboard/admin', [AdminController::class, 'ShowAdmin']);
 Route::post('/post/createuser', [UserController::class, 'AddUser']);
 
 Route::post('/logout', [UserController::class, 'LogOut']);
+
+Route::post('/login', [UserController::class, 'LogIn']);
