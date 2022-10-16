@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\UserController;
+use App\Models\Admin;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
 /*
@@ -41,17 +42,29 @@ Route::post('/login', [UserController::class, 'LogIn']);
 // Subdomain dev.localhost
 // To access, you have to be logged in first
 Route::domain('dev.localhost')->group(function() {
-    Route::middleware(['auth'])->group(function() {
+   // Route::middleware(['auth'])->group(function() {
         Route::get('/dashboard', [PagesController::class, 'Dashboard']); 
 
-        Route::get('/dashboard/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
-
-        Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
-
-        Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
-
+        // For admin
         Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);    
+        Route::get('/dashboard/adminform', [PagesController::class, 'AdminForm']);
+        Route::post('/dashboard/addadmin', [AdminController::class, 'AddAdmin']);
 
+        // For booking
+        Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
+        Route::get('/dashboard/bookingform', [PagesController::class, 'BookingForm']);
+        Route::post('/dashboard/addbooking', [BookingController::class, 'AddBooking']);
+
+        // For restaurant
+        Route::get('/dashboard/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
+        Route::get('/dashboard/restaurantform', [PagesController::class, 'RestaurantForm']);
+        Route::post('/dashboard/restaurantbooking', [RestaurantController::class, 'AddRestaurant']);
+
+        // For user
+        Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
+        Route::get('/dashboard/userform', [PagesController::class, 'UserForm']);
+        Route::post('/dashboard/restaurantbooking', [UserController::class, 'AddBooking']);
+        
         Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
-    });
+    // });
 }); 

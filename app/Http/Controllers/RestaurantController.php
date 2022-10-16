@@ -23,7 +23,7 @@ class RestaurantController extends Controller
         $restaurant->price_range_higher = $request->price_range_higher;
         
         $restaurant->save();
-        return back()->with('success', 'Data is inserted');
+        return back();
     }
 
     public function ShowRestaurant(){
