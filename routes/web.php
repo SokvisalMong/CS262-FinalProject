@@ -20,6 +20,9 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// If users try to go to localhost without a subdomain
+// it redirects it to the main subdomain
 Route::domain('localhost')->group(function() {
     Route::get('/', function() {
         return redirect('http://www.localhost');
