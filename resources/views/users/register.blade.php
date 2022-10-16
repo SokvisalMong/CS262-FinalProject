@@ -8,13 +8,22 @@
         <p class="mb-4">Create an account to starting booking</p>
     </header>
 
-    <form method="POST" action="/api/post/CreateUser">
+    <form method="POST" action="/post/createuser">
         @csrf
         <div class="mb-6">
             <label for="email" class="inline-block test-lg mb-2"> Email </label>
             <input type="email" class="border border-gray-200 rounded p-2 w-full" name="user_email" value="{{old('user_email')}}"/>
         
             @error('user_email')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+            @enderror
+        </div>
+
+        <div class="mb-6">
+            <label for="mobile" class="inline-block test-lg mb-2"> Phone Number </label>
+            <input type="tel" class="border border-gray-200 rounded p-2 w-full" name="user_mobile" value="{{old('user_mobile')}}"/>
+        
+            @error('user_mobile')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror
         </div>
@@ -33,15 +42,6 @@
             <input type="password" class="border border-gray-200 rounded p-2 w-full" name="user_password_confirmation"value=""/>
       
             @error('user_password_confirmation')
-                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-            @enderror
-        </div>
-
-        <div class="mb-6">
-            <label for="mobile" class="inline-block test-lg mb-2"> Phone Number </label>
-            <input type="tel" class="border border-gray-200 rounded p-2 w-full" name="user_mobile" value="{{old('user_mobile')}}"/>
-        
-            @error('user_mobile')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror
         </div>

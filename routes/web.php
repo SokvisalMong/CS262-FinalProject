@@ -40,3 +40,9 @@ Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
 Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
 
 Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);
+
+Route::post('/post/createuser', [UserController::class, 'AddUser']);
+
+Route::post('/logout', [UserController::class, 'LogOut']);
+
+Route::post('/login', [UserController::class, 'LogIn']);
