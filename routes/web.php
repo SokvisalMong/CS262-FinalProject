@@ -21,28 +21,37 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 
 Route::get('/', [PagesController::class, 'Home']);
 
-Route::get('/dashboard', [PagesController::class, 'Dashboard']); 
-
-
-
 Route::get('/restaurantlist', [PagesController::class, 'RestaurantList']);
 
-Route::get('/register', [PagesController::class, 'Register']);
-
-Route::get('/signin', [PagesController::class, 'SignIn']);
-
-
-
-Route::get('/dashboard/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
-
-Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
-
-Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
-
-Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);
+//Restricts the register and sign in page for guests only
+//Or those who aren't logged in
+//Signed in means you can't enter
+Route::middleware(['guest'])->group(function() {
+    Route::get('/register', [PagesController::class, 'Register'])->name('login');
+    
+    Route::get('/signin', [PagesController::class, 'SignIn']);
+});
 
 Route::post('/post/createuser', [UserController::class, 'AddUser']);
 
 Route::post('/logout', [UserController::class, 'LogOut']);
 
 Route::post('/login', [UserController::class, 'LogIn']);
+
+// Subdomain dev.localhost
+// To access, you have to be logged in first
+Route::domain('dev.localhost')->group(function() {
+    Route::middleware(['auth'])->group(function() {
+        Route::get('/dashboard', [PagesController::class, 'Dashboard']); 
+
+        Route::get('/dashboard/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
+
+        Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
+
+        Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
+
+        Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);    
+
+        Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
+    });
+}); 
