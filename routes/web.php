@@ -46,7 +46,7 @@ Route::domain('www.localhost')->group(function() {
         
         Route::post('/login', [UserController::class, 'LogIn']);
     
-        Route::post('/post/createuser', [UserController::class, 'AddUser']);
+        Route::post('/createuser', [UserController::class, 'AddUser']);
     });
     
     Route::middleware(['auth'])->group(function() {

@@ -8,7 +8,7 @@
         <p class="mb-4">Create an account to starting booking</p>
     </header>
 
-    <form method="POST" action="/post/createuser">
+    <form method="POST" action="/createuser">
         @csrf
         <div class="mb-6">
             <label for="email" class="inline-block test-lg mb-2"> Email </label>
