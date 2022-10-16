@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BookingController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\RestaurantController;
-use App\Http\Controllers\UserController;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DevController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\RestaurantController;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
 /*
@@ -53,33 +54,35 @@ Route::domain('dev.localhost')->group(function() {
     // Unauthorized access will be sent here
     Route::middleware(['guest'])->group(function() {
 
-        Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
+        Route::get('/signin', [DevController::class, 'SignIn'])->name('login');
+
+        Route::post('/login', [AdminController::class, 'LogIn']);
 
     });
     
     // Logged in admins having access to the sites
     Route::middleware(['auth'])->group(function() {
 
-        Route::get('/', [PagesController::class, 'Dashboard']); 
+        Route::get('/', [DevController::class, 'Dashboard']); 
 
         // For admin
+        Route::get('/adminform', [DevController::class, 'AdminForm']);
         Route::get('/admintable', [AdminController::class, 'ShowAdmin']);    
-        Route::get('/adminform', [PagesController::class, 'AdminForm']);
         Route::post('/addadmin', [AdminController::class, 'AddAdmin']);
 
         // For booking
+        Route::get('/bookingform', [DevController::class, 'BookingForm']);
         Route::get('/bookingtable', [BookingController::class, 'ShowBooking']);
-        Route::get('/bookingform', [PagesController::class, 'BookingForm']);
         Route::post('/addbooking', [BookingController::class, 'AddBooking']);
 
         // For restaurant
+        Route::get('/restaurantform', [DevController::class, 'RestaurantForm']);
         Route::get('/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
-        Route::get('/restaurantform', [PagesController::class, 'RestaurantForm']);
         Route::post('/restaurantbooking', [RestaurantController::class, 'AddRestaurant']);
 
         // For user
+        Route::get('/userform', [DevController::class, 'UserForm']);
         Route::get('/usertable', [UserController::class, 'ShowUser']);
-        Route::get('/userform', [PagesController::class, 'UserForm']);
         Route::post('/restaurantbooking', [UserController::class, 'AddBooking']);
         
     });
