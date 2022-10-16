@@ -22,6 +22,6 @@ class AdminController extends Controller
     public function ShowAdmin(){
         $admin_db = DB::select("select * from admins");
 
-        return view('dashboard.admin', ["v_admins" => $admin_db]);
+        return view('dashboard.admintable', ["v_admins" => $admin_db]);
     }
 }
