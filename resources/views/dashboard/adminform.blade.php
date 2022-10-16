@@ -22,7 +22,7 @@
         </div>
         <div class="md:flex md:items-center">
             <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">
-                Log In 
+                Submit
             </button>
         </div>
 </div>
