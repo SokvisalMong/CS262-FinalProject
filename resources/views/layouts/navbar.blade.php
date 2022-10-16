@@ -9,14 +9,14 @@
         {{-- Sign Up botton --}}
         <div class="ml-2">
             <button class="bg_blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
-                <a href="/Register">Sign Up</a>
+                <a href="/register">Sign Up</a>
             </button>
         </div>
 
         {{-- sign in button --}}
         <div class="ml-2">
             <button class="bg_blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
-                <a href="/SignIn">Log In</a>
+                <a href="/signin">Log In</a>
             </button>
         </div>
     </div>
