@@ -9,10 +9,16 @@
                     ID
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Username
+                    Date
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Email
+                    Time
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Party Size
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Status
                 </th>
             </tr>
         </thead>
@@ -27,16 +33,24 @@
                 <td class="py-4 px-6">
                     Example 
                 </td>
+                <td class="py-4 px-6">
+                    Example 
+                </td>
+                <td class="py-4 px-6">
+                    Example 
+                </td>
             </tr>
-            @foreach ($v_admins as $item)
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$item->admin_id}}</td>
-                <td class="py-4 px-6">{{$item->admin_username}}</td>
-                <td class="py-4 px-6">{{$item->admin_email}}</td>
-                <td class="py-4 px-6">{{$item->admin_password}}</td>
-            </tr>
+            @foreach ($v_bookings as $item)
+                <tr>
+                    <td>{{$item->booking_id}}</td>
+                    <td>{{$item->booking_date}}</td>
+                    <td>{{$item->booking_time}}</td>
+                    <td>{{$item->party_size}}</td>
+                    <td>{{$item->booking_status}}</td>
+                </tr>    
             @endforeach
         </tbody>
     </table>
 </div>
+
 @stop

@@ -37,6 +37,6 @@ Route::get('/dashboard/restaurant', [RestaurantController::class, 'ShowRestauran
 
 Route::get('/dashboard/user', [UserController::class, 'ShowUser']);
 
-Route::get('/dashboard/booking', [BookingController::class, 'ShowBooking']);
+Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
 
 Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);
