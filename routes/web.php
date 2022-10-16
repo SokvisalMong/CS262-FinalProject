@@ -55,6 +55,12 @@ Route::domain('dev.localhost')->group(function() {
 
         Route::get('/dashboard/addadmin', [AdminController::class, 'AddAdmin']);
 
+        Route::get('/dashboard/addbooking', [BookingController::class, 'AddBooking']);
+
+        Route::get('/dashboard/adduser', [UserController::class, 'AddUser']);
+        
+        Route::get('/dashboard/addrestaurant', [AdminController::class, 'AddRestaurant']);
+
         Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
     });
 }); 
