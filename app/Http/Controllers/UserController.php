@@ -24,6 +24,6 @@ class UserController extends Controller
     public function ShowUser() {
         $user_db = DB::select("select * from users");
 
-        return view('dataview.user', ["v_users" => $user_db]);
+        return view('dashboard.user', ["v_users" => $user_db]);
     }
 }
