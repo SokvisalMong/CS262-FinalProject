@@ -72,7 +72,7 @@
             </tr>
             @foreach ($v_restaurants as $item)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td>{{$item->restaurant_id}}</td>
+                <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$item->restaurant_id}}</td>
                 <td>{{$item->restaurant_name}}</td>
                 <td>{{$item->payment_options}}</td>
                 <td>{{$item->hours_of_operation}}</td>

@@ -48,7 +48,7 @@
             </tr>
             @foreach ($v_users as $item)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td>{{$item->user_id}}</td>
+                    <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$item->user_id}}</td>
                     <td>{{$item->user_email}}</td>
                     <td>{{$item->user_firstname}}</td>
                     <td>{{$item->user_lastname}}</td>
