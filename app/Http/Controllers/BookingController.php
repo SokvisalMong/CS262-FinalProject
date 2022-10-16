@@ -17,7 +17,7 @@ class BookingController extends Controller
         $booking->party_size     = $request->party_size;
 
         $booking-> save();
-        return view('dashboard.bookingform');
+        return back();
     }
 
     public function ShowBooking(){

@@ -45,11 +45,6 @@ Route::domain('dev.localhost')->group(function() {
    // Route::middleware(['auth'])->group(function() {
         Route::get('/dashboard', [PagesController::class, 'Dashboard']); 
 
-        Route::get('/dashboard/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
-
-        Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
-
-
         // For admin
         Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);    
         Route::get('/dashboard/adminform', [PagesController::class, 'AdminForm']);
@@ -57,16 +52,19 @@ Route::domain('dev.localhost')->group(function() {
 
         // For booking
         Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
-        Route::get('/dashboard/addbooking', [BookingController::class, 'AddBooking']);
+        Route::get('/dashboard/bookingform', [PagesController::class, 'BookingForm']);
+        Route::post('/dashboard/addbooking', [BookingController::class, 'AddBooking']);
 
+        // For restaurant
+        Route::get('/dashboard/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
+        Route::get('/dashboard/restaurantform', [PagesController::class, 'RestaurantForm']);
+        Route::post('/dashboard/restaurantbooking', [RestaurantController::class, 'AddRestaurant']);
 
-
-
-
-        Route::get('/dashboard/adduser', [UserController::class, 'AddUser']);
+        // For user
+        Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
+        Route::get('/dashboard/userform', [PagesController::class, 'UserForm']);
+        Route::post('/dashboard/restaurantbooking', [UserController::class, 'AddBooking']);
         
-        Route::get('/dashboard/addrestaurant', [RestaurantController::class, 'AddRestaurant']);
-
         Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
     // });
 }); 

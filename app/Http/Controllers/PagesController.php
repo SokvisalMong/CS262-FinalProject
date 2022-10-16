@@ -29,4 +29,16 @@ class PagesController extends Controller
     public function AdminForm(){
         return view('dashboard.adminform');
     }
+
+    public function BookingForm(){
+        return view('dashboard.bookingform');
+    }
+
+    public function RestaurantForm(){
+        return view('dashboard.restaurantform');
+    }
+
+    public function UserForm(){
+        return view('dashboard.userform');
+    }
 }
