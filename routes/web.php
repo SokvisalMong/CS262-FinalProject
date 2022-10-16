@@ -40,3 +40,5 @@ Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
 Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
 
 Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);
+
+Route::post('/dashboard/adminform', [AdminController::class, 'AddAdmin']);
