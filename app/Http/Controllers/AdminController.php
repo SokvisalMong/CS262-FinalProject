@@ -16,7 +16,7 @@ class AdminController extends Controller
         $admin->admin_password = $request->admin_password;
 
         $admin-> save();
-        return view('dashboard.adminform');
+        return back();
     }
 
     public function ShowAdmin(){

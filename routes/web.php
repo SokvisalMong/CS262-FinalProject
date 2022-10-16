@@ -42,25 +42,31 @@ Route::post('/login', [UserController::class, 'LogIn']);
 // Subdomain dev.localhost
 // To access, you have to be logged in first
 Route::domain('dev.localhost')->group(function() {
-    Route::middleware(['auth'])->group(function() {
+   // Route::middleware(['auth'])->group(function() {
         Route::get('/dashboard', [PagesController::class, 'Dashboard']); 
 
         Route::get('/dashboard/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
 
         Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
 
-        Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
 
+        // For admin
         Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);    
+        Route::get('/dashboard/adminform', [PagesController::class, 'AdminForm']);
+        Route::post('/dashboard/addadmin', [AdminController::class, 'AddAdmin']);
 
-        Route::get('/dashboard/addadmin', [AdminController::class, 'AddAdmin']);
-
+        // For booking
+        Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
         Route::get('/dashboard/addbooking', [BookingController::class, 'AddBooking']);
+
+
+
+
 
         Route::get('/dashboard/adduser', [UserController::class, 'AddUser']);
         
         Route::get('/dashboard/addrestaurant', [RestaurantController::class, 'AddRestaurant']);
 
         Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
-    });
+    // });
 }); 
