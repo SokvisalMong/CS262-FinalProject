@@ -5,18 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use phpseclib3\Crypt\RC2;
 
 class AdminController extends Controller
 {
     public function AddAdmin(Request $request){
-        $admin = new Admin();
+        // $admin = new Admin();
 
-        $admin->admin_username = $request->admin_username;
-        $admin->admin_email    = $request->admin_email;
-        $admin->admin_password = $request->admin_password;
+        // $admin->admin_username = $request->admin_username;
+        // $admin->admin_email    = $request->admin_email;
+        // $admin->admin_password = $request->admin_password;
 
-        $admin-> save();
-        return back();
+        // $admin-> save();
+        // return back();
+        $formFields = $request->validate([
+
+        ]);
+    }
+
+    public function LogIn(Request $request) {
+
     }
 
     public function ShowAdmin(){
