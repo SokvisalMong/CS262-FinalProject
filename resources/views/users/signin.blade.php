@@ -29,7 +29,7 @@
         </div>
 
         <div class="mb-6">
-            <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">Sign Up</button>
+            <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">Sign In</button>
         </div>
         
     </form>
