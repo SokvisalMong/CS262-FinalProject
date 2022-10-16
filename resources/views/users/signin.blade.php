@@ -8,7 +8,7 @@
         <p class="mb-4">Sign in to your account to start booking</p>
     </header>
 
-    <form method="POST" action="">
+    <form method="POST" action="/login">
         @csrf
         <div class="mb-6">
             <label for="email" class="inline-block test-lg mb-2"> Email </label>
@@ -21,7 +21,7 @@
 
         <div class="mb-6">
             <label for="password" class="inline-block text-lg mb-2"> Password </label>
-            <input type="password" class="border border-gray-200 rounded p-2 w-full" name="user_password"value="{{old('user_password')}}"/>
+            <input type="password" class="border border-gray-200 rounded p-2 w-full" name="user_password" value="{{old('user_password')}}"/>
       
             @error('user_password')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="mb-6">
-            <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">Sign Up</button>
+            <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">Sign In</button>
         </div>
         
     </form>
