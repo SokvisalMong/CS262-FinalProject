@@ -41,7 +41,7 @@
                 </td>
             </tr>
             @foreach ($v_bookings as $item)
-                <tr>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td>{{$item->booking_id}}</td>
                     <td>{{$item->booking_date}}</td>
                     <td>{{$item->booking_time}}</td>
