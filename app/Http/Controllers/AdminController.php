@@ -16,12 +16,12 @@ class AdminController extends Controller
         $admin->admin_password = $request->admin_password;
 
         $admin-> save();
-        return back()->with('success', 'Data is inserted');
+        return view()->with('success', 'Data is inserted');
     }
 
     public function ShowAdmin(){
         $admin_db = DB::select("select * from admins");
 
-        return view('dashboard.admin', ["v_admins" => $admin_db]);
+        return view('dashboard.admintable', ["v_admins" => $admin_db]);
     }
 }
