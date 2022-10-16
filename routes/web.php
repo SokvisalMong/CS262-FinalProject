@@ -21,18 +21,21 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 
 Route::get('/', [PagesController::class, 'Home']);
 
-Route::get('/SignIn', [PagesController::class, 'SignIn']);
+Route::get('/dashboard', [PagesController::class, 'Dashboard']); // route for dashboard needs to be lower case cus we dont have button to click into dashboard
+                                                                 // we cant type Uppercase in the url for some whatever reason
 
-Route::get('/Dashboard', [PagesController::class, 'Dashboard']);
+Route::get('/restaurantlist', [PagesController::class, 'RestaurantList']);
 
-Route::get('/RestaurantList', [PagesController::class, 'RestaurantList']);
+Route::get('/register', [PagesController::class, 'Register']);
 
-Route::get('/Register', [PagesController::class, 'Register']);
+Route::get('/signin', [PagesController::class, 'SignIn']);
 
-Route::get('/Show/Restaurant', [RestaurantController::class, 'ShowRestaurant']);
 
-Route::get('/Show/User', [UserController::class, 'ShowUser']);
 
-Route::get('/Show/Booking', [BookingController::class, 'ShowBooking']);
+Route::get('/show/restaurant', [RestaurantController::class, 'ShowRestaurant']);
 
-Route::get('/Show/Admin', [AdminController::class, 'ShowAdmin']);
+Route::get('/show/user', [UserController::class, 'ShowUser']);
+
+Route::get('/show/booking', [BookingController::class, 'ShowBooking']);
+
+Route::get('/show/admin', [AdminController::class, 'ShowAdmin']);

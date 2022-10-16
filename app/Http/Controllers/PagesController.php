@@ -10,10 +10,6 @@ class PagesController extends Controller
         return view('home');
     }
 
-    public function SignIn() {
-        return view('signin');
-    }
-
     public function Dashboard() {
         return view('dashboard.dashboard');
     }
@@ -24,5 +20,9 @@ class PagesController extends Controller
 
     public function Register() {
         return view('users.register');
+    }
+
+    public function SignIn() {
+        return view('users.signin');
     }
 }
