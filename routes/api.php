@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +25,11 @@ Route::get('/get/ShowAdmin', [ApiController::class, 'ShowAdmin']);
 
 Route::get('/get/ShowRestaurant', [ApiController::class, 'ShowRestaurant']);
 
-Route::post('/get/ShowBooking', [ApiController::class, 'ShowBooking']);
+Route::get('/get/ShowBooking', [ApiController::class, 'ShowBooking']);
 
-Route::post('/get/ShowUser', [ApiController::class, 'ShowUser']);
+Route::get('/get/ShowUser', [ApiController::class, 'ShowUser']);
 
+Route::post('/post/CreateUser', [UserController::class, 'AddUser']);
 // // FULL URL Call http://127.0.0.1:8000/api/do/orderdel/65
 // Route::get('/do/orderdel/{id}', [ApiController::class, 'orderdel']);
 
