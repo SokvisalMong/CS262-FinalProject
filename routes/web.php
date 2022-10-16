@@ -20,6 +20,11 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::domain('localhost')->group(function() {
+    Route::get('/', function() {
+        return redirect('http://www.localhost');
+    });
+});
 
 // To access the default site, use the main domain www
 // Conflicting issues when you don't
