@@ -6,6 +6,26 @@
     </div>
     {{-- sign up/in button on the right --}}
     <div class="flex">
+        @auth
+        <div class="ml-2">
+            <form class="inline" method="POST" action="/manage">
+            @csrf
+            <button type="submit" class="bg-white hover:bg-grey-100 text-black py-1 px-2 rounded">
+                {{auth()->user()->user_email}}
+            </button>
+            </form>
+        </div>
+       
+        <div class="ml-2">
+            <form class="inline" method="POST" action="/logout">
+            @csrf
+            <button type="submit" class="bg-white hover:bg-grey-100 text-black py-1 px-2 rounded">
+                Sign Out
+            </button>
+            </form>
+        </div>
+        </form>
+        @else
         {{-- Sign Up botton --}}
         <div class="ml-2">
             <button class="bg_blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
@@ -19,5 +39,6 @@
                 <a href="/signin">Log In</a>
             </button>
         </div>
+        @endauth
     </div>
 </nav>
