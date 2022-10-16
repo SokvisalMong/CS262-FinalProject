@@ -29,6 +29,6 @@ class RestaurantController extends Controller
     public function ShowRestaurant(){
         $restaurant_db = DB::select("select * from restaurants");
 
-        return view('dashboard.restaurant', ["v_restaurants" => $restaurant_db]);
+        return view('dashboard.restauranttable', ["v_restaurants" => $restaurant_db]);
     }
 }
