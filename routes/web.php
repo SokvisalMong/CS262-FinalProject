@@ -20,51 +20,67 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 |
 */
 
-Route::get('/', [PagesController::class, 'Home']);
-
-Route::get('/restaurantlist', [PagesController::class, 'RestaurantList']);
-
-//Restricts the register and sign in page for guests only
-//Or those who aren't logged in
-//Signed in means you can't enter
-Route::middleware(['guest'])->group(function() {
-    Route::get('/register', [PagesController::class, 'Register'])->name('login');
+// To access the default site, use the main domain www
+// Conflicting issues when you don't
+Route::domain('www.localhost')->group(function() {
+    Route::get('/', [PagesController::class, 'Home']);
     
-    Route::get('/signin', [PagesController::class, 'SignIn']);
+    Route::get('/restaurantlist', [PagesController::class, 'RestaurantList']);
+    
+    //Restricts the register and sign in page for guests only
+    //Or those who aren't logged in
+    //Signed in means you can't enter
+    Route::middleware(['guest'])->group(function() {
+        Route::get('/register', [PagesController::class, 'Register'])->name('login');
+        
+        Route::get('/signin', [PagesController::class, 'SignIn']);
+        
+        Route::post('/login', [UserController::class, 'LogIn']);
+    
+        Route::post('/post/createuser', [UserController::class, 'AddUser']);
+    });
+    
+    Route::middleware(['auth'])->group(function() {
+        Route::post('/logout', [UserController::class, 'LogOut']);
+    
+        Route::get('/manage', [UserController::class, 'Edit']);
+    });
 });
-
-Route::post('/post/createuser', [UserController::class, 'AddUser']);
-
-Route::post('/logout', [UserController::class, 'LogOut']);
-
-Route::post('/login', [UserController::class, 'LogIn']);
 
 // Subdomain dev.localhost
 // To access, you have to be logged in first
 Route::domain('dev.localhost')->group(function() {
-   // Route::middleware(['auth'])->group(function() {
-        Route::get('/dashboard', [PagesController::class, 'Dashboard']); 
+    // Unauthorized access will be sent here
+    Route::middleware(['guest'])->group(function() {
+
+        Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
+
+    });
+    
+    // Logged in admins having access to the sites
+    Route::middleware(['auth'])->group(function() {
+
+        Route::get('/', [PagesController::class, 'Dashboard']); 
 
         // For admin
-        Route::get('/dashboard/admintable', [AdminController::class, 'ShowAdmin']);    
-        Route::get('/dashboard/adminform', [PagesController::class, 'AdminForm']);
-        Route::post('/dashboard/addadmin', [AdminController::class, 'AddAdmin']);
+        Route::get('/admintable', [AdminController::class, 'ShowAdmin']);    
+        Route::get('/adminform', [PagesController::class, 'AdminForm']);
+        Route::post('/addadmin', [AdminController::class, 'AddAdmin']);
 
         // For booking
-        Route::get('/dashboard/bookingtable', [BookingController::class, 'ShowBooking']);
-        Route::get('/dashboard/bookingform', [PagesController::class, 'BookingForm']);
-        Route::post('/dashboard/addbooking', [BookingController::class, 'AddBooking']);
+        Route::get('/bookingtable', [BookingController::class, 'ShowBooking']);
+        Route::get('/bookingform', [PagesController::class, 'BookingForm']);
+        Route::post('/addbooking', [BookingController::class, 'AddBooking']);
 
         // For restaurant
-        Route::get('/dashboard/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
-        Route::get('/dashboard/restaurantform', [PagesController::class, 'RestaurantForm']);
-        Route::post('/dashboard/restaurantbooking', [RestaurantController::class, 'AddRestaurant']);
+        Route::get('/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
+        Route::get('/restaurantform', [PagesController::class, 'RestaurantForm']);
+        Route::post('/restaurantbooking', [RestaurantController::class, 'AddRestaurant']);
 
         // For user
-        Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
-        Route::get('/dashboard/userform', [PagesController::class, 'UserForm']);
-        Route::post('/dashboard/restaurantbooking', [UserController::class, 'AddBooking']);
+        Route::get('/usertable', [UserController::class, 'ShowUser']);
+        Route::get('/userform', [PagesController::class, 'UserForm']);
+        Route::post('/restaurantbooking', [UserController::class, 'AddBooking']);
         
-        Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
-    // });
+    });
 }); 
