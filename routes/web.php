@@ -21,7 +21,8 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 
 Route::get('/', [PagesController::class, 'Home']);
 
-Route::get('/Dashboard', [PagesController::class, 'Dashboard']);
+Route::get('/dashboard', [PagesController::class, 'Dashboard']); // route for dashboard needs to be lower case cus we dont have button to click into dashboard
+                                                                 // we cant type Uppercase in the url for some whatever reason
 
 Route::get('/RestaurantList', [PagesController::class, 'RestaurantList']);
 
