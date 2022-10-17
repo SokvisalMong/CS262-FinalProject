@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="w-full max-ws">
-    <form method="post" action="/dashboard/addbooking" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form method="post" action="/addbooking" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         @csrf
         <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" >

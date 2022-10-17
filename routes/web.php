@@ -52,8 +52,8 @@ Route::domain('www.localhost')->group(function() {
     });
     
     Route::middleware(['auth:web'])->group(function() {
-        Route::get('/manage', [PagesController::class, 'Edit']);
-        Route::post('/update', [UserController::class, 'Update']);
+        Route::get('/edit', [PagesController::class, 'Edit']);
+        Route::put('/update', [UserController::class, 'Update']);
         
         Route::post('/logout', [UserController::class, 'LogOut']);
     });
@@ -87,7 +87,7 @@ Route::domain('dev.localhost')->group(function() {
         // For booking
         Route::get('/bookingform', [DevController::class, 'BookingForm']);
         Route::get('/bookingtable', [BookingController::class, 'ShowBooking']);
-        Route::post('/addbooking', [BookingController::class, 'AddBooking']);
+        Route::post('/addbooking/{restaurant}', [BookingController::class, 'AddBooking']);
 
         // For restaurant
         Route::get('/restaurantform', [DevController::class, 'RestaurantForm']);
@@ -110,7 +110,7 @@ Route::domain('dev.localhost')->group(function() {
 // OWNER
 Route::domain('owner.localhost')->group(function() {
     Route::middleware(['guest:owner'])->group(function() {
-        
+
     });
 
     Route::middleware(['auth:owner'])->group(function() {
