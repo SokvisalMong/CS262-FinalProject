@@ -21,9 +21,13 @@ class RestaurantController extends Controller
         $restaurant->restaurant_email   = $request->restaurant_email;
         $restaurant->price_range_lower  = $request->price_range_lower;
         $restaurant->price_range_higher = $request->price_range_higher;
+        // i have no idea. i got it from the internet
+        if($request->hasFile('restaurant_pic')) {
+            $restaurant['restaurant_pic'] = $request->file('restaurant_pic')->store('restaurant_pics', 'public');
+        }
         
         $restaurant->save();
-        return back()->with('success', 'Data is inserted');
+        return back();
     }
 
     public function ShowRestaurant(){
