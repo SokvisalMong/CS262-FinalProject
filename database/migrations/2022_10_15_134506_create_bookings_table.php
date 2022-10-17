@@ -19,7 +19,7 @@ return new class extends Migration
             //         ->constrained('restaurants')
             //         ->cascadeOnUpdate()
             //         ->cascadeOnDelete();
-            $table->foreign('booking_id')->references('restaurant_id')->on('restaurants');
+            // $table->foreign('booking_id')->references('restaurant_id')->on('restaurants');
 
             $table->enum('booking_status', ['Active', 'Canceled', 'Completed']);
             $table->date('booking_date');

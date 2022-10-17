@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->integer('restaurant_id')->autoIncrement();
-
+            //testing
+            $table->foreignId('booking_id')->constrained()->onDelete('cascade');
+            //
             $table->string('restaurant_name', 100);
             $table->set('payment_options', ['Cash', 'Visa', 'Mastercard', 'ABA']);
             $table->string('hours_of_operation', 100);
