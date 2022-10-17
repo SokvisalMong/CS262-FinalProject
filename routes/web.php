@@ -21,6 +21,7 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 |
 */
 
+// DEFAULT
 // If users try to go to localhost without a subdomain
 // it redirects it to the main subdomain
 Route::domain('localhost')->group(function() {
@@ -29,6 +30,7 @@ Route::domain('localhost')->group(function() {
     });
 });
 
+// USER
 // To access the default site, use the main domain www
 // Conflicting issues when you don't
 Route::domain('www.localhost')->group(function() {
@@ -51,11 +53,13 @@ Route::domain('www.localhost')->group(function() {
     
     Route::middleware(['auth:web'])->group(function() {
         Route::get('/manage', [PagesController::class, 'Edit']);
+        Route::post('/update', [UserController::class, 'Update']);
         
         Route::post('/logout', [UserController::class, 'LogOut']);
     });
 });
 
+// ADMIN
 // Subdomain dev.localhost
 // To access, you have to be logged in first
 Route::domain('dev.localhost')->group(function() {
@@ -96,6 +100,20 @@ Route::domain('dev.localhost')->group(function() {
         Route::post('/restaurantbooking', [UserController::class, 'AddBooking']);
         
 
+        Route::get('/edit', [DevController::class, 'Edit']);
+        Route::post('/update', [AdminController::class, 'Update']);
+
         Route::post('/logout', [AdminController::class, 'LogOut']);
     });
 }); 
+
+// OWNER
+Route::domain('owner.localhost')->group(function() {
+    Route::middleware(['guest:owner'])->group(function() {
+        
+    });
+
+    Route::middleware(['auth:owner'])->group(function() {
+
+    });
+});
