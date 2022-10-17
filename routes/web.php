@@ -63,7 +63,7 @@ Route::domain('dev.localhost')->group(function() {
         // For user
         Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
         Route::get('/dashboard/userform', [PagesController::class, 'UserForm']);
-        Route::post('/dashboard/adduser', [UserController::class, 'AddBooking']);
+        Route::post('/dashboard/adduser', [UserController::class, 'AddUser']);
         
         Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
     // });
