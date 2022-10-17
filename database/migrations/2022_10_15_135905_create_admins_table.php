@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -24,6 +25,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
+
+        DB::table('admins')->insert([
+            ['admin_username' => 'root', 'admin_email' => 'admin@email.com', 'admin_password' => bcrypt('password')]
+        ]);
     }
 
 
