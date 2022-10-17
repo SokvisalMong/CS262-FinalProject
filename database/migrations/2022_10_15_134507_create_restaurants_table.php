@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('restaurant_email', 100)->nullable();
             $table->integer('price_range_lower');
             $table->integer('price_range_higher');
+            $table->string('restaurant_pic')->nullable();
 
             $table->timestamps();
         });

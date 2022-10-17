@@ -114,6 +114,14 @@
             <input class="shadow border border-gray-200 rounded p-2 w-full" type="text" id="highpricerange" name="price_range_higher"> 
         </div>
 
+        {{-- adding restaurant pictures into db --}}
+        <div class="mb-6">
+            <label for="restaurant_pic" class="inline-block text-lg mb-2">
+              Company Logo
+            </label>
+            <input type="file" class="border border-gray-200 rounded p-2 w-full" name="restaurant_pic" />
+        </div>
+
         <div class="md:flex md:items-center">
             <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">
                 Submit
