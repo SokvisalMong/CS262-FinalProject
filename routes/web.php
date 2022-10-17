@@ -67,7 +67,7 @@ Route::domain('dev.localhost')->group(function() {
     Route::middleware(['guest:admin'])->group(function() {
         Route::get('/register', [DevController::class, 'Register']);
 
-        Route::get('/signin', [DevController::class, 'SignIn'])->name('login');
+        Route::get('/signin', [DevController::class, 'SignIn']);
 
         Route::post('/login', [AdminController::class, 'LogIn']);
 
