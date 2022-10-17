@@ -39,7 +39,7 @@ Route::domain('www.localhost')->group(function() {
     //Restricts the register and sign in page for guests only
     //Or those who aren't logged in
     //Signed in means you can't enter
-    Route::middleware(['guest'])->group(function() {
+    Route::middleware(['guest:web'])->group(function() {
         Route::get('/register', [PagesController::class, 'Register'])->name('login');
         
         Route::get('/signin', [PagesController::class, 'SignIn']);
@@ -49,7 +49,7 @@ Route::domain('www.localhost')->group(function() {
         Route::post('/createuser', [UserController::class, 'AddUser']);
     });
     
-    Route::middleware(['auth'])->group(function() {
+    Route::middleware(['auth:web'])->group(function() {
         Route::post('/logout', [UserController::class, 'LogOut']);
     
         Route::get('/manage', [UserController::class, 'Edit']);
@@ -60,23 +60,25 @@ Route::domain('www.localhost')->group(function() {
 // To access, you have to be logged in first
 Route::domain('dev.localhost')->group(function() {
     // Unauthorized access will be sent here
-    Route::middleware(['guest'])->group(function() {
+    Route::middleware(['guest:admin'])->group(function() {
+        Route::get('/register', [DevController::class, 'Register']);
 
         Route::get('/signin', [DevController::class, 'SignIn'])->name('login');
 
         Route::post('/login', [AdminController::class, 'LogIn']);
 
+        Route::post('/addadmin', [AdminController::class, 'AddAdmin']);
+
     });
     
     // Logged in admins having access to the sites
-    Route::middleware(['auth'])->group(function() {
+    Route::middleware(['auth:admin'])->group(function() {
 
         Route::get('/', [DevController::class, 'Dashboard']); 
 
         // For admin
         Route::get('/adminform', [DevController::class, 'AdminForm']);
         Route::get('/admintable', [AdminController::class, 'ShowAdmin']);    
-        Route::post('/addadmin', [AdminController::class, 'AddAdmin']);
 
         // For booking
         Route::get('/bookingform', [DevController::class, 'BookingForm']);
@@ -93,5 +95,7 @@ Route::domain('dev.localhost')->group(function() {
         Route::get('/usertable', [UserController::class, 'ShowUser']);
         Route::post('/restaurantbooking', [UserController::class, 'AddBooking']);
         
+
+        Route::post('/logout', [AdminController::class, 'LogOut']);
     });
 }); 

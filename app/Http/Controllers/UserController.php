@@ -32,19 +32,19 @@ class UserController extends Controller
     
         $user = User::create($formFields);
     
-        auth()->login($user);
+        auth('web')->login($user);
 
         return redirect('/')->with('message', 'User created and logged in.');
     }
 
     // Logs the user in with the provided email and password
     public function LogIn(Request $request) {
-        $formFields = $request->validate([
+        $request->validate([
             'user_email' => ['required', 'email'],
             'user_password' => 'required'
         ]);
         
-        if(auth()->attempt(['user_email' => $request->user_email, 'password' => $request->user_password])) {
+        if(auth('web')->attempt(['user_email' => $request->user_email, 'password' => $request->user_password])) {
             //if(auth()->attempt($formFields)) {
                 $request->session()->regenerate();
                 
@@ -55,7 +55,7 @@ class UserController extends Controller
     }
         // Logs the user out
     public function LogOut(Request $request) {
-        auth()->logout();
+        auth('web')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

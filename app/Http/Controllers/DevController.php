@@ -8,7 +8,11 @@ class DevController extends Controller
 {
     //
     public function SignIn() {
-        return view('dev.login');
+        return view('dev.signin');
+    }
+
+    public function Register() {
+        return view('dev.register');
     }
 
     public function Dashboard() {
