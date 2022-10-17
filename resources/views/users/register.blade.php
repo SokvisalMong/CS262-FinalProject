@@ -53,7 +53,7 @@
         <div class="mt-8">
             <p>
                 Already have an account?
-                <a href="/signin" class="text-laravel">Login</a>
+                <a href="/signin" class="text-blue-700">Login</a>
             </p>
         </div>
     </form>
