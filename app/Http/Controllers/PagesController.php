@@ -21,4 +21,8 @@ class PagesController extends Controller
     public function SignIn() {
         return view('users.signin');
     }
+
+    public function Edit() {
+        return view('users.edit');
+    }
 }

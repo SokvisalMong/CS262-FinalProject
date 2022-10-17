@@ -63,6 +63,26 @@ class UserController extends Controller
         return redirect('/')->with('message', 'You have been logged out.');
     }
         
+    public function Update(Request $request, User $user) {
+        if($user->user_id != auth('web')->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
+        $formFields = $request->validate([
+            'user_email' => ['required', 'email', Rule::unique('users', 'user_email')],
+            'user_password' => ['required', 'confimred', 'min:8'],
+            'user_mobile' => 'required',
+            'user_firstname' => 'nullable',
+            'user_lastname' => 'nullable',
+        ]);
+
+        $formFields['user_password'] = bcrypt($formFields['user_password']);
+
+        $user->update($formFields);
+
+        return back()->with('message', 'User account has been updated successfully.');
+    }
+    
         // Returns all data in the 'users' table
     public function ShowUser() {
         $user_db = DB::select("select * from users");

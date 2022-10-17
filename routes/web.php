@@ -50,9 +50,9 @@ Route::domain('www.localhost')->group(function() {
     });
     
     Route::middleware(['auth:web'])->group(function() {
+        Route::get('/manage', [PagesController::class, 'Edit']);
+        
         Route::post('/logout', [UserController::class, 'LogOut']);
-    
-        Route::get('/manage', [UserController::class, 'Edit']);
     });
 });
 
