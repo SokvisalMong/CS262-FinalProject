@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('restaurants', function (Blueprint $table) {
-            $table->integer('restaurants_id')->autoIncrement();
+            $table->integer('restaurant_id')->autoIncrement();
             $table->string('restaurant_name', 100);
             $table->set('payment_options', ['Cash', 'Visa', 'Mastercard', 'ABA']);
             $table->string('hours_of_operation', 100);
