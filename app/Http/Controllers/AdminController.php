@@ -58,6 +58,24 @@ class AdminController extends Controller
         return redirect('/')->with('message', 'You have been logged out.');
     }
 
+    public function Update(Request $request, Admin $admin) {
+        if($admin->admin_id != auth('admin')->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
+        $formFields = $request->validate([
+            'admin_email' => ['required', 'email', Rule::unique('admins', 'admin_email')],
+            'admin_password' => ['required', 'confirmed', 'min:8'],
+            'admin_username' => 'required',
+        ]);
+
+        $formFields['admin_password'] = bcrypt($formFields['admin_password']);
+
+        $admin->update($formFields);
+
+        return back()->with('message', 'Admin account has been updated successfully.');
+    }
+
     public function ShowAdmin(){
         $admin_db = DB::select("select * from admins");
 
