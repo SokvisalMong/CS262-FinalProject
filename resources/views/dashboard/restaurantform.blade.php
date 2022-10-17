@@ -26,12 +26,28 @@
         </label>
         <input class="shadow border border-gray-200 rounded p-2 w-full" type="text" id="cuisines" name="cuisines"> 
     </div>
+
     <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2" >
             Dress Code
         </label>
-        <input class="shadow border border-gray-200 rounded p-2 w-full" type="text" id="dress_code" name="dress_code"> 
+        {{-- <input class="shadow border border-gray-200 rounded p-2 w-full" type="text" id="dress_code" name="dress_code">  --}}
+        <input type="radio" id="casual" name="dress_code" value="Casual">
+        <label for="casual">Casual</label>
+
+        <input type="radio" id="business_casual" name="dress_code" value="business_casual">
+        <label for="business_casual">Business Casual</label>
+
+        <input type="radio" id="casual_elegant" name="dress_code" value="casual_elegant">
+        <label for="casual_elegant">Casual Elegant</label>
+
+        <input type="radio" id="formal" name="dress_code" value="formalO">
+        <label for="Formal">Formal</label>
+
+        <input type="radio" id="jacket" name="dress_code" value="jacket">
+        <label for="jacket">Jacket</label>
     </div>
+
     <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2" >
             Website
