@@ -10,10 +10,6 @@ class PagesController extends Controller
         return view('home');
     }
 
-    public function Dashboard() {
-        return view('dashboard.dashboard');
-    }
-
     public function RestaurantList() {
         return view('restaurantlist');
     }
@@ -24,21 +20,5 @@ class PagesController extends Controller
 
     public function SignIn() {
         return view('users.signin');
-    }
-
-    public function AdminForm(){
-        return view('dashboard.adminform');
-    }
-
-    public function BookingForm(){
-        return view('dashboard.bookingform');
-    }
-
-    public function RestaurantForm(){
-        return view('dashboard.restaurantform');
-    }
-
-    public function UserForm(){
-        return view('dashboard.userform');
     }
 }
