@@ -58,12 +58,12 @@ Route::domain('dev.localhost')->group(function() {
         // For restaurant
         Route::get('/dashboard/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
         Route::get('/dashboard/restaurantform', [PagesController::class, 'RestaurantForm']);
-        Route::post('/dashboard/restaurantbooking', [RestaurantController::class, 'AddRestaurant']);
+        Route::post('/dashboard/addrestaurant', [RestaurantController::class, 'AddRestaurant']);
 
         // For user
         Route::get('/dashboard/usertable', [UserController::class, 'ShowUser']);
         Route::get('/dashboard/userform', [PagesController::class, 'UserForm']);
-        Route::post('/dashboard/restaurantbooking', [UserController::class, 'AddBooking']);
+        Route::post('/dashboard/adduser', [UserController::class, 'AddUser']);
         
         Route::get('/login', [AdminController::class, 'LogIn'])->name('login');
     // });
