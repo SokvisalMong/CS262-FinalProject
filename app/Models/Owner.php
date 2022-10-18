@@ -13,7 +13,6 @@ class Owner extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'owners';
-    protected $primaryKey = 'owner_id';
 
     /**
      * The attributes that are mass assignable.

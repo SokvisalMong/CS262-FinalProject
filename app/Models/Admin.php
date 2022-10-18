@@ -13,7 +13,6 @@ class Admin extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'admins';
-    protected $primaryKey = 'admin_id';
 
     /**
      * The attributes that are mass assignable.
