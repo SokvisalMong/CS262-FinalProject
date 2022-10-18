@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::domain(env('APP_URL'))->group(function() {
+    Route::get('/', function() {
+        return redirect('www.' .env('APP_URL'));
+    });
+});
 
 Route::domain('www.' .env('APP_URL'))->group(function () {
     Route::get('/', [UserController::class, 'home']);
