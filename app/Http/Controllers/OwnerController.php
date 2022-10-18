@@ -82,4 +82,10 @@ class OwnerController extends Controller
 
         return back()->with('message', 'Owner account has been updated successfully.');
     }
+    
+    public function ShowOwner() {
+        $owner_db = DB::select("select * from owners");
+
+        return view('dashboard.ownertable', ["v_owners" => $owner_db]);
+    }
 }
