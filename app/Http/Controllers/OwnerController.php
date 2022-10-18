@@ -59,4 +59,13 @@ class OwnerController extends Controller
 
         return back()->withErrors(['owner_email' => 'Invalid Credentials'])->onlyInput('owner_email');
     }
+
+    public function LogOut(Request $request) {
+        auth('owner')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'You have been logged out.'); 
+    }
 }
