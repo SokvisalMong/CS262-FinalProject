@@ -10,4 +10,12 @@ class UserController extends Controller
     public function home() {
         return view('user.home');
     }
+
+    public function login() {
+        return view('users.login');
+    }
+
+    public function register() {
+        return view('user.register');
+    }
 }
