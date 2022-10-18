@@ -23,7 +23,7 @@ class AdminController extends Controller
 
         auth('admin')->login($admin);
 
-        return redirect('/')->with('message', 'Admin has been created and logged in.');
+        return redirect('/dashboard')->with('message', 'Admin has been created and logged in.');
     }
 
     public function LogIn(Request $request) {
@@ -35,7 +35,7 @@ class AdminController extends Controller
         if(auth('admin')->attempt(['admin_email' => $request->admin_email, 'password' => $request->admin_password])) {
             $request->session()->regenerate();
 
-            return redirect('/')->with('message', 'You are now logged in.');
+            return redirect('/dashboard')->with('message', 'You are now logged in.');
         };
 
         return back()->withErrors(['admin_email' => 'Invalid Credentials'])->onlyInput('admin_email');

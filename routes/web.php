@@ -64,8 +64,9 @@ Route::domain('www.localhost')->group(function() {
 // To access, you have to be logged in first
 Route::domain('dev.localhost')->group(function() {
     // Unauthorized access will be sent here
+    Route::get('/', [DevController::class, 'Home']); 
+    
     Route::middleware(['guest:admin'])->group(function() {
-        Route::get('/', [DevController::class, 'Home']); 
 
         Route::get('/register', [DevController::class, 'Register']);
 
