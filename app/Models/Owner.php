@@ -43,4 +43,8 @@ class Owner extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function restaurant() {
+        return $this->hasMany(Restaurant::class, 'owner_id');
+    }
 }
