@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -17,8 +18,8 @@ return new class extends Migration
             $table->integer('owner_id')->autoIncrement();
 
             $table->string('owner_email', 100)->unique();
-            $table->string('owner_firstname', 100);
-            $table->string('owner_lastname', 100);
+            $table->string('owner_firstname', 100)->nullable();
+            $table->string('owner_lastname', 100)->nullable();
             $table->string('owner_password');
             $table->string('owner_mobile', 100)->unique();
 
@@ -26,6 +27,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
+
+        DB::table('owners')->insert([
+            ['owner_email' => 'owner@email.com', 'owner_password' => bcrypt('password'), 'owner_mobile' => '012345678']
+        ]);
     }
 
     /**
