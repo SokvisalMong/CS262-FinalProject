@@ -35,7 +35,7 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
     Route::get('/', [OwnerController::class, 'home']);
 
     Route::middleware(['guest:owner'])->group(function() {  
-        Route::get('/login', [OwnerController::class, 'login'])->('owner.login');
+        Route::get('/login', [OwnerController::class, 'login'])->name('owner.login');
         
         Route::get('/register', [OwnerController::class, 'register']);
     });
