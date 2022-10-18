@@ -57,6 +57,8 @@ Route::domain('www.localhost')->group(function() {
         Route::put('/update', [UserController::class, 'Update']);
         
         Route::post('/logout', [UserController::class, 'LogOut']);
+
+        Route::post('/book/{restaurant}', [BookingController::class, 'Booking']);
     });
 });
 
