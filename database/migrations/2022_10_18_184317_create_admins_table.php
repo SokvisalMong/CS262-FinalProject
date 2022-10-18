@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->integer('admin_id')->autoIncrement();
 
             // Required
             $table->string('name')->unique();
