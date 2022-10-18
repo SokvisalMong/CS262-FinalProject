@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\UserController;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +29,9 @@ Route::domain(env('APP_URL'))->group(function() {
 // User pages
 Route::domain('www.' .env('APP_URL'))->group(function () {
     Route::get('/', [UserController::class, 'home']);
+
+    // List of restaurants
+    Route::get('/restaurants', [RestaurantController::class, 'list']);
     
     Route::middleware(['guest:web'])->group(function() {
         // User login page
@@ -33,20 +39,30 @@ Route::domain('www.' .env('APP_URL'))->group(function () {
         
         // User Register page
         Route::get('/register', [UserController::class, 'register']);
-    });
-    Route::middleware(['auth:web'])->group(function() {
-        
-    });
-    
-    // Post
-    // Creates a new user and logs them in
-    Route::post('/users', [UserController::class, 'store']);
-    
-    // Logs a user in
-    Route::post('/authenticate', [UserController::class, 'authenticate']);
 
-    // Logs a user out
-    Route::post('/logout', [UserController::class, 'logout']);
+        // Creates a new user and logs them in
+        Route::post('/users', [UserController::class, 'store']);
+        
+        // Logs a user in
+        Route::post('/authenticate', [UserController::class, 'authenticate']);
+    });
+
+    Route::middleware(['auth:web'])->group(function() {
+        // User account edit page
+        Route::get('/edit/{user}', [UserController::class, 'edit']);
+
+        // Updates the account of a user
+        Route::get('/update/{user}', [UserController::class, 'update']);
+
+        // Logs a user out
+        Route::post('/logout', [UserController::class, 'logout']);
+
+        // Booking page
+        Route::get('/booking', [BookingController::class, 'booking']);
+
+        // Books a restaurant
+        Route::post('/booking/create/{restaurant}', [BookingController::class, 'store']);
+    });
 });
 
 // Owner pages
@@ -73,8 +89,19 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
     Route::middleware(['guest:admin'])->group(function() {
         Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
     });
+    Route::get('/tables/users', [UserController::class, 'showtable']);
 
     Route::middleware(['auth:admin'])->group(function() {
         Route::get('/register', [AdminController::class, 'register']);
+
+        // Displays the table in the database
+
+        Route::get('/tables/admins', [AdminController::class, 'showtable']);
+
+        Route::get('/tables/owners', [OwnerController::class, 'showtable']);
+
+        Route::get('/tables/bookings', [BookingController::class, 'showtable']);
+
+        Route::get('/tables/restaurant', [RestaurantController::class, 'showtable']);
     });
 });

@@ -21,13 +21,17 @@ class UserController extends Controller
         return view('user.register');
     }
 
+    public function edit() {
+        return view('user.edit');
+    }
+
     // Creates a user account and logs them in immediately
     public function store(Request $request) {
         $formFields = $request->validate([
             'name' => ['required', 'min:3', Rule::unique('users', 'name')],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'confirmed', 'min:8'],
-            'phone' => ['required', 'numeric', 'min:10']
+            'phone' => ['required', 'numeric', 'min:10', Rule::unique('users', 'phone')]
         ]);
 
         $formFields['password'] = bcrypt($formFields['password']);
@@ -54,6 +58,23 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
 
+    public function update(Request $request, User $user) {
+        if($user->id != auth()->id()){
+            abort(403, 'Unauthorized Action');
+        }
+        
+        $formFields = $request->validate([
+            'name' => ['required', Rule::unique('users', 'name')],
+            'phone' => ['required', 'numeric', 'min:10', Rule::unique('users', 'phone')],
+            'firstname' => 'nullable',
+            'lastname' => 'nullable'
+        ]);
+
+        $user->update($formFields);
+        
+        return back()->with('message', 'User account has been updated.');
+    }
+
     public function logout(Request $request) {
         auth()->logout();
 
@@ -61,5 +82,11 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/')->with('message', 'You have been logged out');
+    }
+
+    public function showtable() {
+        $user_db = User::all();
+
+        return view('user.table', ["v_user" => $user_db]);
     }
 }
