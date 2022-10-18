@@ -15,12 +15,10 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->integer('booking_id')->autoIncrement();
-            // $table->foreignId('restaurant_id')
-            //         ->constrained('restaurants')
-            //         ->cascadeOnUpdate()
-            //         ->cascadeOnDelete();
-            // $table->foreign('booking_id')->references('id')->on('restaurants');
-            // $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
+            $table->integer('restaurant_id');
+            $table->foreign('restaurant_id')->references('restaurant_id')->on('restaurants');
+            $table->integer('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
 
             $table->enum('booking_status', ['Active', 'Canceled', 'Completed']);
             $table->date('booking_date');

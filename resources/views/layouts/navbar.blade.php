@@ -8,7 +8,7 @@
     <div class="flex">
         @auth
         <div class="ml-2">
-            <a href="/manage" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded">{{auth()->user()->user_email}}</a>
+            <a href="/edit" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded"> Manage </a>
         </div>
         
         <div class="ml-2">

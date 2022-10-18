@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -25,46 +26,58 @@ class UserController extends Controller
         $formFields = $request->validate([
             'user_email' => ['required', 'email', Rule::unique('users', 'user_email')],
             'user_password' => ['required', 'confirmed', 'min:8'],
-            'user_mobile' => 'required'
+            'user_mobile' => ['required', Rule::unique('users', 'user_mobile')]
         ]);
 
         $formFields['user_password'] = bcrypt($formFields['user_password']);
     
         $user = User::create($formFields);
     
-        auth()->login($user);
+        auth('web')->login($user);
 
         return redirect('/')->with('message', 'User created and logged in.');
     }
 
-    // Logs the user out
+    // Logs the user in with the provided email and password
+    public function LogIn(Request $request) {
+        $request->validate([
+            'user_email' => ['required', 'email'],
+            'user_password' => 'required'
+        ]);
+        
+        if(auth('web')->attempt(['user_email' => $request->user_email, 'password' => $request->user_password])) {
+            //if(auth()->attempt($formFields)) {
+                $request->session()->regenerate();
+                
+                return redirect('/')->with('message', 'You are now logged in.');
+            };
+            
+        return back()->withErrors(['user_email' => 'Invalid Credentials'])->onlyInput('user_email');
+    }
+        // Logs the user out
     public function LogOut(Request $request) {
-        auth()->logout();
+        auth('web')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return redirect('/')->with('message', 'You have been logged out.');
     }
-
-    // Logs the user in with the provided email and password
-    public function LogIn(Request $request) {
+        
+    public function Update(Request $request) {
         $formFields = $request->validate([
-            'user_email' => ['required', 'email'],
-            'user_password' => 'required'
+            'user_password' => ['required', 'confirmed', 'min:8'],
+            'user_mobile' => ['required', Rule::unique('users', 'user_mobile')],
+            'user_firstname' => 'nullable',
+            'user_lastname' => 'nullable',
         ]);
 
-        if(auth()->attempt(['user_email' => $request->user_email, 'password' => $request->user_password])) {
-        //if(auth()->attempt($formFields)) {
-            $request->session()->regenerate();
+        DB::update('update users set user_firstname = ?, user_lastname = ?, user_mobile = ?', [$formFields['user_firstname'], $formFields['user_lastname'], $formFields['user_mobile']]);
 
-            return redirect('/')->with('message', 'You are now logged in.');
-        };
-
-        return back()->withErrors(['user_email' => 'Invalid Credentials'])->onlyInput('user_email');
+        return back()->with('message', 'User account has been updated successfully.');
     }
-
-    // Returns all data in the 'users' table
+    
+        // Returns all data in the 'users' table
     public function ShowUser() {
         $user_db = DB::select("select * from users");
 

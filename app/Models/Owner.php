@@ -4,27 +4,29 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Owner extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'admins';
-    protected $primaryKey = 'admin_id';
+    protected $table = 'owners';
+    protected $primaryKey = 'owner_id';
 
     public $timestamps = true;
 
     protected $fillable = [
-        'admin_email',
-        'admin_password',
-        'admin_username',
+        'owner_email',
+        'owner_firstname',
+        'owner_lastname',
+        'owner_password',
+        'owner_mobile',
     ];
 
     protected $hidden = [
-        'admin_password',
+        'owner_password',
         'remember_token',
     ];
 
@@ -33,6 +35,6 @@ class Admin extends Authenticatable
     ];
 
     public function getAuthPassword() {
-        return $this->admin_password;
+        return $this->owner_password;
     }
 }

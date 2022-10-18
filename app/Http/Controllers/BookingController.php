@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
-    public function AddBooking(Request $request){
+    public function AddBooking(Request $request, Restaurant $restaurant){
         $booking = new Booking();
         
         $booking->booking_status = $request->booking_status;
         $booking->booking_date   = $request->booking_date;
         $booking->booking_time   = $request->booking_time;
         $booking->party_size     = $request->party_size;
+
+        $booking->user_id        = auth()->user()->user_id;
+        $booking->restaurant_id  = $restaurant->restaurant_id;
 
         $booking-> save();
         return back();

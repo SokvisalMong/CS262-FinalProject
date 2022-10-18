@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
     public function Home() {
         return view('home');
-    }
-
-    public function Dashboard() {
-        return view('dashboard.dashboard');
     }
 
     public function RestaurantList() {
@@ -26,19 +23,7 @@ class PagesController extends Controller
         return view('users.signin');
     }
 
-    public function AdminForm(){
-        return view('dashboard.adminform');
-    }
-
-    public function BookingForm(){
-        return view('dashboard.bookingform');
-    }
-
-    public function RestaurantForm(){
-        return view('dashboard.restaurantform');
-    }
-
-    public function UserForm(){
-        return view('dashboard.userform');
+    public function Edit() {
+        return view('users.edit');
     }
 }

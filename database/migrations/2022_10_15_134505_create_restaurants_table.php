@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->integer('restaurant_id')->autoIncrement();
+            $table->integer('owner_id');
+            $table->foreign('owner_id')->references('owner_id')->on('owners');
+            // $table->foreignId('owner_id')->constrained('owners', 'owner_id');
+
             $table->string('restaurant_name', 100);
             $table->set('payment_options', ['Cash', 'Visa', 'Mastercard', 'ABA']);
             $table->string('hours_of_operation', 100);
