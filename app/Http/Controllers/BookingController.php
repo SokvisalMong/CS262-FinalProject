@@ -19,13 +19,10 @@ class BookingController extends Controller
             'date' => ['required', 'date_format:o:m:d'],
             'time' => ['required', 'date_format:H:i:s'],
             'size' => ['required', 'numeric'],
-
-            'user_id' => 'nullable',
-            'restaurant_id' => 'nullable',
         ]);
 
         $formFields['status'] = 'Active';
-        $formFields['user_id'] = auth()->user()->id;
+        $formFields['user_id'] = auth()->id;
         $formFields['restaurant_id'] = $restaurant->id;
 
         Booking::create($formFields);

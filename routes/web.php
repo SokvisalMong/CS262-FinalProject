@@ -78,9 +78,9 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
     Route::middleware(['auth:owner'])->group(function() {
         Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
-        Route::get('/restaurant/edit/{restaurant}', [RestaurantController::class, 'edit']);
+        Route::get('/restaurants/edit/{restaurant}', [RestaurantController::class, 'edit']);
 
-        Route::put('/restaurant/update/{restaurant}', [RestaurantController::class, 'update']);
+        Route::put('/restaurants/update/{restaurant}', [RestaurantController::class, 'update']);
     });
 });
 
