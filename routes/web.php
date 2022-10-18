@@ -9,6 +9,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\RestaurantController;
+use App\Models\Restaurant;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
 /*
@@ -77,34 +78,42 @@ Route::domain('dev.localhost')->group(function() {
 
         Route::post('/login', [AdminController::class, 'LogIn']);
 
-        Route::post('/addadmin', [AdminController::class, 'AddAdmin']);
-
     });
     
-
+    
     // Logged in admins having access to the sites
     Route::middleware(['auth:admin'])->group(function() {
         Route::get('/dashboard', [DevController::class, 'Dashboard']);
-
+        
         // For admin
         Route::get('/adminform', [DevController::class, 'AdminForm']);
-        Route::get('/admintable', [AdminController::class, 'ShowAdmin']);    
-
+        Route::get('/admintable', [AdminController::class, 'ShowAdmin']);
+        Route::delete('/admins/{admin}', [AdminController::class, 'DeleteAdmin']);
+        Route::post('/addadmin', [AdminController::class, 'AddAdmin']);
+        
         // For booking
         Route::get('/bookingform', [DevController::class, 'BookingForm']);
         Route::get('/bookingtable', [BookingController::class, 'ShowBooking']);
+        Route::delete('/bookings/{booking}', [BookingController::class, 'DeleteBooking']);
+
         Route::post('/addbooking/{restaurant}', [BookingController::class, 'AddBooking']);
 
         // For restaurant
         Route::get('/restaurantform', [DevController::class, 'RestaurantForm']);
         Route::get('/restauranttable', [RestaurantController::class, 'ShowRestaurant']);
+        Route::delete('/restaurants/{restaurant}', [RestaurantController::class, 'DeleteRestaurant']);
         Route::post('/restaurantbooking', [RestaurantController::class, 'AddRestaurant']);
 
         // For user
         Route::get('/userform', [DevController::class, 'UserForm']);
         Route::get('/usertable', [UserController::class, 'ShowUser']);
+        Route::delete('/users/{user}', [UserController::class, 'DeleteUser']);
         Route::post('/restaurantbooking', [UserController::class, 'AddBooking']);
-        
+
+        Route::get('/ownerform', [OwnerController::class, 'OwnerForm']);
+        Route::get('/ownertable', [OwnerController::class, 'ShowOwner']);
+        Route::delete('/owners/owner', [OwnerController::class, 'DeleteOwner']);
+        Route::post('/addowner', [OwnerController::class, 'AddOwner']);
 
         Route::get('/edit', [DevController::class, 'Edit']);
         Route::post('/update', [AdminController::class, 'Update']);
