@@ -15,16 +15,27 @@ class BookingController extends Controller
 
     public function store(Request $request, Restaurant $restaurant) {    
         $formFields = $request->validate([
+            'status' => 'nullable',
             'date' => ['required', 'date_format:o:m:d'],
             'time' => ['required', 'date_format:H:i:s'],
             'size' => ['required', 'numeric'],
 
-            'user_id' => auth()->user()->id,
-            'restaurant_id' => $restaurant->restaurant_id,
+            'user_id' => 'nullable',
+            'restaurant_id' => 'nullable',
         ]);
+
+        $formFields['status'] = 'Active';
+        $formFields['user_id'] = auth()->user()->id;
+        $formFields['restaurant_id'] = $restaurant->id;
 
         Booking::create($formFields);
         
         return back()->with('message', 'Booking has been created.');
+    }
+
+    public function showtable() {
+        $booking_db = Booking::all();
+
+        return view('booking.table', ["v_booking" => $booking_db]);
     }
 }

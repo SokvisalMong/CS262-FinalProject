@@ -52,7 +52,7 @@ Route::domain('www.' .env('APP_URL'))->group(function () {
         Route::get('/edit/{user}', [UserController::class, 'edit']);
 
         // Updates the account of a user
-        Route::get('/update/{user}', [UserController::class, 'update']);
+        Route::put('/update/{user}', [UserController::class, 'update']);
 
         // Logs a user out
         Route::post('/logout', [UserController::class, 'logout']);
@@ -78,7 +78,9 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
     Route::middleware(['auth:owner'])->group(function() {
         Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
-        Route::get('/restaurant/edit', [OwnerController::class, 'restaurantEdit']);
+        Route::get('/restaurant/edit/{restaurant}', [RestaurantController::class, 'edit']);
+
+        Route::put('/restaurant/update/{restaurant}', [RestaurantController::class, 'update']);
     });
 });
 
@@ -89,13 +91,18 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
     Route::middleware(['guest:admin'])->group(function() {
         Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
     });
-    Route::get('/tables/users', [UserController::class, 'showtable']);
-
+    
     Route::middleware(['auth:admin'])->group(function() {
+        Route::get('/dashboard', [AdminController::class, 'dashboard']);
+        
         Route::get('/register', [AdminController::class, 'register']);
+        
+        // Creates an admin user
+        Route::post('/admins', [AdminController::class, 'store']);
 
         // Displays the table in the database
-
+        Route::get('/tables/users', [UserController::class, 'showtable']);
+        
         Route::get('/tables/admins', [AdminController::class, 'showtable']);
 
         Route::get('/tables/owners', [OwnerController::class, 'showtable']);

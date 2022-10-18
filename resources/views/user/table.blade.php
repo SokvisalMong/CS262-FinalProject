@@ -1,4 +1,4 @@
-@section('content')dd
+@section('content')
 
 <div>
     <table>
