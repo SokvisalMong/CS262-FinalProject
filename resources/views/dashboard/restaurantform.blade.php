@@ -1,6 +1,7 @@
 @extends('dashboard.dashmaster')
 
 @section('content')
+<div class="mx-20 mt-14">
 <div class="w-full max-ws">
     <form method="post" action="/dashboard/addrestaurant" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         @csrf
