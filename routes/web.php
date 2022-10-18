@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Redirects non subdomain url to www subdomain
 Route::domain(env('APP_URL'))->group(function() {
     Route::get('/', function() {
         return redirect('www.' .env('APP_URL'));
@@ -24,10 +26,27 @@ Route::domain(env('APP_URL'))->group(function() {
 // User pages
 Route::domain('www.' .env('APP_URL'))->group(function () {
     Route::get('/', [UserController::class, 'home']);
-
-    Route::get('/login', [UserController::class, 'login'])->name('login');
     
-    Route::get('/register', [UserController::class, 'register']);
+    Route::middleware(['guest:web'])->group(function() {
+        // User login page
+        Route::get('/login', [UserController::class, 'login'])->name('login');
+        
+        // User Register page
+        Route::get('/register', [UserController::class, 'register']);
+    });
+    Route::middleware(['auth:web'])->group(function() {
+        
+    });
+    
+    // Post
+    // Creates a new user and logs them in
+    Route::post('/users', [UserController::class, 'store']);
+    
+    // Logs a user in
+    Route::post('/authenticate', [UserController::class, 'authenticate']);
+
+    // Logs a user out
+    Route::post('/logout', [UserController::class, 'logout']);
 });
 
 // Owner pages
