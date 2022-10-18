@@ -65,6 +65,8 @@ Route::domain('www.localhost')->group(function() {
 Route::domain('dev.localhost')->group(function() {
     // Unauthorized access will be sent here
     Route::middleware(['guest:admin'])->group(function() {
+        Route::get('/', [DevController::class, 'Home']); 
+
         Route::get('/register', [DevController::class, 'Register']);
 
         Route::get('/signin', [DevController::class, 'SignIn']);
@@ -75,10 +77,10 @@ Route::domain('dev.localhost')->group(function() {
 
     });
     
+
     // Logged in admins having access to the sites
     Route::middleware(['auth:admin'])->group(function() {
-
-        Route::get('/', [DevController::class, 'Dashboard']); 
+        Route::get('/dashboard', [DevController::class, 'Dashboard']);
 
         // For admin
         Route::get('/adminform', [DevController::class, 'AdminForm']);

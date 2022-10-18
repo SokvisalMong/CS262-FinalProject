@@ -11,14 +11,6 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function AddAdmin(Request $request){
-        // $admin = new Admin();
-
-        // $admin->admin_username = $request->admin_username;
-        // $admin->admin_email    = $request->admin_email;
-        // $admin->admin_password = $request->admin_password;
-
-        // $admin-> save();
-        // return back();
         $formFields = $request->validate([
             'admin_username' => 'required',
             'admin_email' => ['required', 'email', Rule::unique('admins', 'admin_email')],

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 class DevController extends Controller
 {
     //
+    public function Home() {
+        return view('dev.home');
+    }
+
     public function SignIn() {
         return view('dev.signin');
     }
