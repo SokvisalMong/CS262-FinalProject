@@ -21,8 +21,10 @@ class AdminController extends Controller
 
         $admin = Admin::create($formFields);
 
+        // To be changed
+        // Only root admins can make other admin accounts
         auth('admin')->login($admin);
-
+        
         return redirect('/dashboard')->with('message', 'Admin has been created and logged in.');
     }
 
