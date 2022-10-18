@@ -32,6 +32,12 @@
             <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">Sign In</button>
         </div>
         
+        <div class="mt-8">
+            <p>
+                Don't have an account?
+                <a href="/register" class="text-blue-700">Register</a>
+            </p>
+        </div>
     </form>
 </x-card>
 
