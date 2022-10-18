@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\RestaurantController;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
@@ -65,7 +66,7 @@ Route::domain('www.localhost')->group(function() {
 Route::domain('dev.localhost')->group(function() {
     // Unauthorized access will be sent here
     Route::get('/', [DevController::class, 'Home']); 
-    
+
     Route::middleware(['guest:admin'])->group(function() {
 
         Route::get('/register', [DevController::class, 'Register']);
@@ -112,11 +113,25 @@ Route::domain('dev.localhost')->group(function() {
 
 // OWNER
 Route::domain('owner.localhost')->group(function() {
+    Route::get('/', [OwnerController::class, 'Home']);
+
     Route::middleware(['guest:owner'])->group(function() {
-
+        Route::get('/register', [OwnerController::class, 'Register']);
+        
+        Route::post('/addowner', [OwnerController::class, 'AddOwner']);
+        
+        Route::get('/signin', [OwnerController::class, 'SignIn']);
+        
+        Route::post('/login',  [OwnerController::class, 'LogIn']);
     });
-
+    
     Route::middleware(['auth:owner'])->group(function() {
+        Route::get('/dashboard', [OwnerController::class, 'Dashboard']);
+        
+        Route::get('/createrestaurant', [OwnerController::class, 'CreateRestaurant']);
 
+        Route::post('/create', [OwnerController::class, 'AddRestaurant']);
+
+        Route::get('/restaurant', [OwnerController::class, 'Restaurant']);
     });
 });
