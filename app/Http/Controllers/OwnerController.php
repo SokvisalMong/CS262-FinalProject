@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class OwnerController extends Controller
 {
@@ -67,5 +68,18 @@ class OwnerController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/')->with('message', 'You have been logged out.'); 
+    }
+
+    public function Update(Request $request) {
+        $formFields = $request->validate([
+            'owner_password' => ['required', 'confirmed'],
+            'owner_mobile' => ['required'],
+            'owner_firstname' => 'nullable',
+            'owner_lastname' => 'nullable',
+        ]);
+
+        DB::update('update owners set owner_firstname = ?, owner_lastname = ?, owner_mobile = ?', [$formFields['owner_firstname'], $formFields['owner_lastname'], $formFields['owner_mobile']]);
+
+        return back()->with('message', 'Owner account has been updated successfully.');
     }
 }
