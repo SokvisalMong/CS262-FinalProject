@@ -38,4 +38,10 @@ class RestaurantController extends Controller
 
         return redirect('/restaurants/' .$restaurant->id)->with('message', 'Restaurant has been created');
     }
+
+    public function showtable() {
+        $restaurant_db = Restaurant::all();
+
+        return view('restaurant.showtable', ["v_restaurant" => $restaurant_db]);
+    }
 }
