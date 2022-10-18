@@ -23,6 +23,10 @@ Route::domain(env('APP_URL'))->group(function() {
 // User pages
 Route::domain('www.' .env('APP_URL'))->group(function () {
     Route::get('/', [UserController::class, 'home']);
+
+    Route::get('/login', [UserController::class, 'login']);
+    
+    Route::get('/register', [UserController::class, 'register']);
 });
 
 // Owner pages
@@ -31,6 +35,6 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
 });
 
 // Admin pages
-Route::domain('dev.' .env('APP_URL'))->group(function() {
+Route::domain('admin.' .env('APP_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'home']);
 });
