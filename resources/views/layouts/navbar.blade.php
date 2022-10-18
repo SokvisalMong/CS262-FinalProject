@@ -6,34 +6,38 @@
     </div>
     {{-- sign up/in button on the right --}}
     <div class="flex">
-        @auth
-        <div class="ml-2">
-            <a href="/edit" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded"> Manage </a>
-        </div>
-        
-        <div class="ml-2">
-            <form class="inline" method="POST" action="/logout">
-            @csrf
-            <button type="submit" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded">
-                Sign Out
-            </button>
-            </form>
-        </div>
-        </form>
+        @auth('web')
+            <div class="ml-2">
+                <a href="/edit" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded"> Manage </a>
+            </div>
+            
+            <div class="ml-2">
+                <form class="inline" method="POST" action="/logout">
+                @csrf
+                <button type="submit" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded">
+                    Sign Out
+                </button>
+                </form>
+            </div>
+        @endauth
+        @auth('admin')
+            <div class="ml-2">
+                <a href="/dashboard" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded">Dashboard</a>
+            </div>
         @else
-        {{-- Sign Up botton --}}
-        <div class="ml-2">
-            <button class="bg_blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
-                <a href="/register">Sign Up</a>
-            </button>
-        </div>
+            {{-- Sign Up botton --}}
+            <div class="ml-2">
+                <button class="bg_blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
+                    <a href="/register">Sign Up</a>
+                </button>
+            </div>
 
-        {{-- sign in button --}}
-        <div class="ml-2">
-            <button class="bg_blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
-                <a href="/signin">Log In</a>
-            </button>
-        </div>
+            {{-- sign in button --}}
+            <div class="ml-2">
+                <button class="bg_blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
+                    <a href="/signin">Log In</a>
+                </button>
+            </div>
         @endauth
     </div>
 </nav>

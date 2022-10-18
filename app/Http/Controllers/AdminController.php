@@ -11,14 +11,6 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function AddAdmin(Request $request){
-        // $admin = new Admin();
-
-        // $admin->admin_username = $request->admin_username;
-        // $admin->admin_email    = $request->admin_email;
-        // $admin->admin_password = $request->admin_password;
-
-        // $admin-> save();
-        // return back();
         $formFields = $request->validate([
             'admin_username' => 'required',
             'admin_email' => ['required', 'email', Rule::unique('admins', 'admin_email')],
@@ -29,9 +21,11 @@ class AdminController extends Controller
 
         $admin = Admin::create($formFields);
 
+        // To be changed
+        // Only root admins can make other admin accounts
         auth('admin')->login($admin);
-
-        return redirect('/')->with('message', 'Admin has been created and logged in.');
+        
+        return redirect('/dashboard')->with('message', 'Admin has been created and logged in.');
     }
 
     public function LogIn(Request $request) {
@@ -43,7 +37,7 @@ class AdminController extends Controller
         if(auth('admin')->attempt(['admin_email' => $request->admin_email, 'password' => $request->admin_password])) {
             $request->session()->regenerate();
 
-            return redirect('/')->with('message', 'You are now logged in.');
+            return redirect('/dashboard')->with('message', 'You are now logged in.');
         };
 
         return back()->withErrors(['admin_email' => 'Invalid Credentials'])->onlyInput('admin_email');

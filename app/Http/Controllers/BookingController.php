@@ -29,4 +29,19 @@ class BookingController extends Controller
 
         return view('dashboard.bookingtable', ["v_bookings" => $booking_db]);
     }
+
+    public function Booking(Request $request, Restaurant $restaurant) {
+        $formFields = $request->validate([
+            'booking_date' => ['required','date_format:o:m:d'],
+            'booing_time' => ['required', 'date_format:H:i:s'],
+            'party_size' => ['required','numeric'],
+
+            'user_id' => auth('web')->user()->user_id,
+            'restaurant_id' => $restaurant->restaurant_id,
+        ]);
+
+        Booking::create($formFields);
+
+        return back()->with('message', 'Booking has been created.');
+    }
 }
