@@ -1,5 +1,3 @@
-@section('content')
-
 <div>
     <table>
         <thead>
@@ -28,5 +26,3 @@
         </tbody>
     </table>
 </div>
-
-@stop

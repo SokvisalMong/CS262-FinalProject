@@ -22,7 +22,7 @@ class UserController extends Controller
     }
 
     public function edit() {
-        return view('user.edit');
+        return view('user.edit')->with('user', auth()->user());
     }
 
     // Creates a user account and logs them in immediately
@@ -58,19 +58,23 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
 
-    public function update(Request $request, User $user) {
-        if($user->id != auth()->id()){
-            abort(403, 'Unauthorized Action');
-        }
-        
-        $formFields = $request->validate([
-            'name' => ['required', Rule::unique('users', 'name')],
-            'phone' => ['required', 'numeric', 'min:10', Rule::unique('users', 'phone')],
+    public function update(Request $request) {
+        $user = auth()->user();
+
+        $request->validate([
+            'name'      => ['required', 'min:3'],
+            'phone'     => ['required', 'numeric', 'min:10'],
             'firstname' => 'nullable',
-            'lastname' => 'nullable'
+            'lastname'  => 'nullable'
         ]);
 
-        $user->update($formFields);
+        $user->name      = $request->name;
+        $user->phone     = $request->phone;
+        $user->firstname = $request->firstname;
+        $user->lastname  = $request->lastname;
+
+        /** @var \App\Models\User $user **/
+        $user->save();
         
         return back()->with('message', 'User account has been updated.');
     }

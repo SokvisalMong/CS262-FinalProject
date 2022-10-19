@@ -49,16 +49,18 @@ Route::domain('www.' .env('APP_URL'))->group(function () {
 
     Route::middleware(['auth:web'])->group(function() {
         // User account edit page
-        Route::get('/edit/{user}', [UserController::class, 'edit']);
+        Route::get('/edit', [UserController::class, 'edit']);
 
         // Updates the account of a user
-        Route::put('/update/{user}', [UserController::class, 'update']);
+        Route::put('/update', [UserController::class, 'update']);
 
         // Logs a user out
         Route::post('/logout', [UserController::class, 'logout']);
 
+        Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show']);
+
         // Booking page
-        Route::get('/booking', [BookingController::class, 'booking']);
+        Route::get('/booking/{restaurant}', [RestaurantController::class, 'book']);
 
         // Books a restaurant
         Route::post('/booking/create/{restaurant}', [BookingController::class, 'store']);

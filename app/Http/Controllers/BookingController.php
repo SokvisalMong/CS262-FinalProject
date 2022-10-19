@@ -9,10 +9,6 @@ use Illuminate\Http\Request;
 class BookingController extends Controller
 {
     // Pages
-    public function booking() {
-        return view('booking.booking');
-    }
-
     public function store(Request $request, Restaurant $restaurant) {    
         $formFields = $request->validate([
             'status' => 'nullable',
