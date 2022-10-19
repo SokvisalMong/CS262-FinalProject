@@ -14,7 +14,7 @@ class BookingController extends Controller
     // Pages
     public function show() {
         /** @var \App\Models\User $user **/
-        $user = auth()->user();
+        $user = auth('web')->user();
         $bookings = $user->booking()->get();
         return view('booking.bookings', ['bookings' => $bookings]);        
     }

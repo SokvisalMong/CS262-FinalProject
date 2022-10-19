@@ -6,6 +6,7 @@
 
 @section('content')
 <div>
+    @include('layouts.components.search')
     <h1 class="text-center font-bold text-4xl pt-6">Available Restaurants in Phnom Penh City</h1>
     @foreach($restaurants as $restaurant)
     <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
