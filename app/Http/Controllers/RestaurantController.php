@@ -77,7 +77,7 @@ class RestaurantController extends Controller
     public function showtable() {
         $restaurant_db = Restaurant::all();
 
-        return view('restaurant.showtable', ["v_restaurant" => $restaurant_db]);
+        return view('restaurant.table', ["v_restaurant" => $restaurant_db]);
     }
 
     public function destroy(Restaurant $restaurant) {
