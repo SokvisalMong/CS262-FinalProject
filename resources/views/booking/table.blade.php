@@ -45,7 +45,15 @@
                     <td class="py-7 px-14">{{$booking->date}}</td>
                     <td class="py-7 px-14">{{$booking->time}}</td>
                     <td class="py-7 px-14">{{$booking->size}}</td>
-                    <td class="py-7 px-14"></td>
+                    <td class="py-7 px-14">
+                        <form method="POST" action="/bookings/{{$booking->id}}">
+                            @csrf
+                            @method('DELETE')
+                            <button>
+                              Delete
+                            </button>
+                        </form>
+                    </td>
                 </tr>    
             @endforeach
         </tbody>
