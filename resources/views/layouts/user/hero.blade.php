@@ -11,9 +11,7 @@
         </div>
         {{-- let's go button --}}
         <div class="py-5">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white py-4 px-8 rounded-lg">
-                <a href="/restaurants">Let's go</a>
-            </button>
+            <a href="/restaurants" type="button" class="bg-blue-500 hover:bg-blue-700 text-white py-4 px-8 rounded-lg">Let's go</a>
         </div>
     </div>
 </div>
