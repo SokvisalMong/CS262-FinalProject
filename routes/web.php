@@ -148,5 +148,12 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
         Route::get('/tables/owners', [OwnerController::class, 'showtable']);
         Route::get('/tables/bookings', [BookingController::class, 'showtable']);
         Route::get('/tables/restaurant', [RestaurantController::class, 'showtable']);
+
+        // Delete data
+        Route::delete('/users', [UserController::class, 'destroy']);
+        Route::delete('/owners', [OwnerController::class, 'destroy']);
+        Route::delete('/admins', [AdminController::class, 'destroy']);
+        Route::delete('/restaurants', [RestaurantController::class, 'destroy']);
+        Route::delete('/bookings', [BookingController::class, 'destroy']);
     });
 });

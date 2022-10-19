@@ -97,4 +97,10 @@ class UserController extends Controller
 
         return view('user.table', ["v_user" => $user_db]);
     }
+
+    public function destroy(User $user) {
+        $user->delete();
+
+        return back()->with('message', 'User has been deleted.');
+    }
 }

@@ -79,4 +79,10 @@ class RestaurantController extends Controller
 
         return view('restaurant.showtable', ["v_restaurant" => $restaurant_db]);
     }
+
+    public function destroy(Restaurant $restaurant) {
+        $restaurant->delete();
+
+        return back()->with('message', 'Restaurant has been deleted.');
+    }
 }

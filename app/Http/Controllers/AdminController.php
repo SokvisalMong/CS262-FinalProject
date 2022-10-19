@@ -68,4 +68,10 @@ class AdminController extends Controller
 
         return view('admin.showtable', ["v_admin" => $admin_db]);
     }
+
+    public function destroy(Admin $admin) {
+        $admin->delete();
+
+        return back()->with('message', 'Admin has been deleted');
+    }
 }

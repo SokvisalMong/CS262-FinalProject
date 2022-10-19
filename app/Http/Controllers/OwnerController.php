@@ -70,4 +70,10 @@ class OwnerController extends Controller
 
         return view('owner.table', ["v_owner" => $owner_db]);
     }
+
+    public function destroy(Owner $owner) {
+        $owner->delete();
+
+        return back()->with('message', 'Owner has been deleted.');
+    }
 }
