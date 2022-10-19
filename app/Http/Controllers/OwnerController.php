@@ -44,7 +44,7 @@ class OwnerController extends Controller
     public function authenticate(Request $request) {
         $formFields = $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required', 'min:8'],
+            'password' => ['required', 'password'],
         ]);
 
         if(auth('owner')->attempt($formFields)) {
