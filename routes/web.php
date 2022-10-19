@@ -25,7 +25,7 @@ Route::domain(env('APP_URL'))->group(function() {
         return redirect('http://www.' .env('APP_URL'));
     });
 });
-    
+
 // User pages
 Route::domain('www.' .env('APP_URL'))->group(function () {
     // Index page
@@ -97,9 +97,6 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
     });
 
     Route::middleware(['auth:owner'])->group(function() {
-        // Dashboard for logged in owners
-        // Purpose: unsure
-        Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
         // Page to create restaurant
         Route::get('/restaurants/create', [RestaurantController::class, 'create']);
@@ -113,6 +110,8 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
         // PUT method to update information of a restaurant
         Route::put('/restaurants/update/{restaurant}', [RestaurantController::class, 'update']);
     
+        Route::get('/bookings', [BookingController::class, 'getRestaurantBooking']);
+
         // Logs the owner out of their account.
         Route::post('/logout', [OwnerController::class, 'logout']);
     });
@@ -130,8 +129,6 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
     });
     
     Route::middleware(['auth:admin'])->group(function() {
-        // Dashboard for admins after authenticating
-        Route::get('/dashboard', [AdminController::class, 'dashboard']);
         
         // Page to create more admin users from the default admin account
         Route::get('/register', [AdminController::class, 'register']);
