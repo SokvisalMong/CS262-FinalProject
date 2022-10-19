@@ -28,13 +28,19 @@ Route::domain(env('APP_URL'))->group(function() {
 
 // User pages
 Route::domain('www.' .env('APP_URL'))->group(function () {
+    // Index page
     Route::get('/', [UserController::class, 'home']);
 
+    // About us page
     Route::get('/aboutus', [UserController::class, 'aboutUs']);
 
-    // List of restaurants
-    Route::get('/restaurants', [RestaurantController::class, 'list']);
+    // List of restaurants for users to choose from page
+    Route::get('/restaurants', [RestaurantController::class, 'showAll']);
+
+    // Individual restaurant page
+    Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show']);
     
+    // Non authenthicated users can access
     Route::middleware(['guest:web'])->group(function() {
         // User login page
         Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -49,6 +55,7 @@ Route::domain('www.' .env('APP_URL'))->group(function () {
         Route::post('/authenticate', [UserController::class, 'authenticate']);
     });
 
+    // Authenticated users can access
     Route::middleware(['auth:web'])->group(function() {
         // User account edit page
         Route::get('/edit', [UserController::class, 'edit']);
@@ -57,12 +64,10 @@ Route::domain('www.' .env('APP_URL'))->group(function () {
         Route::put('/update', [UserController::class, 'update']);
 
         // Logs a user out
-        Route::get('/restaurants', [Restaurant::class, 'showAll']);
-
         Route::post('/logout', [UserController::class, 'logout']);
-
-        Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show']);
-
+        
+        // User's previous and present bookings page
+        // Should be sorted by Active, Canceled, Completed
         Route::get('/bookings', [BookingController::class, 'showAll']);
 
         // Booking page
@@ -78,17 +83,29 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
     Route::get('/', [OwnerController::class, 'home']);
 
     Route::middleware(['guest:owner'])->group(function() {  
+        // Login page for owner accounts
         Route::get('/login', [OwnerController::class, 'login'])->name('owner.login');
         
+        // Logs the owner in
+        Route::post('/authenticate', [OwnerController::class, 'authenticate']);
+
+        // Register page for owners
         Route::get('/register', [OwnerController::class, 'register']);
     });
 
     Route::middleware(['auth:owner'])->group(function() {
+        // Dashboard for logged in owners
+        // Purpose: unsure
         Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
+        // Page to edit restaurant details
         Route::get('/restaurants/edit/{restaurant}', [RestaurantController::class, 'edit']);
 
+        // PUT method to update information of a restaurant
         Route::put('/restaurants/update/{restaurant}', [RestaurantController::class, 'update']);
+    
+        // Logs the owner out of their account.
+        Route::post('/logout', [OwnerController::class, 'logout']);
     });
 });
 
@@ -97,26 +114,30 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'home']);
 
     Route::middleware(['guest:admin'])->group(function() {
+        // Login page for admin users
         Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
+    
+        Route::get('/authenticate', [AdminController::class, 'authenticate']);
     });
     
     Route::middleware(['auth:admin'])->group(function() {
+        // Dashboard for admins after authenticating
         Route::get('/dashboard', [AdminController::class, 'dashboard']);
         
+        // Page to create more admin users from the default admin account
         Route::get('/register', [AdminController::class, 'register']);
         
+        // Logs the admin out of the account
+        Route::post('/logout', [AdminController::class, 'logout']);
+
         // Creates an admin user
         Route::post('/admins', [AdminController::class, 'store']);
 
         // Displays the table in the database
         Route::get('/tables/users', [UserController::class, 'showtable']);
-        
         Route::get('/tables/admins', [AdminController::class, 'showtable']);
-
         Route::get('/tables/owners', [OwnerController::class, 'showtable']);
-
         Route::get('/tables/bookings', [BookingController::class, 'showtable']);
-
         Route::get('/tables/restaurant', [RestaurantController::class, 'showtable']);
     });
 });
