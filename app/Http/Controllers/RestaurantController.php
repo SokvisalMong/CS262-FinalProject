@@ -20,6 +20,9 @@ class RestaurantController extends Controller
     public function book(Restaurant $restaurant) {
         return view('booking.book', ['restaurant' => $restaurant]);
     }
+    public function showAll() {
+        return view('restaurant.restaurants', ['restaurants' => Restaurant::all()]);
+    }
 
     public function store(Request $request) {
         $formFields = $request->validate([

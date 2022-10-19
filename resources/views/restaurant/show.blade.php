@@ -1,5 +1,5 @@
 @extends('layouts.user.master')
 
 @section('content')
-    // About us page
+    // Specific Restaurant Page
 @stop

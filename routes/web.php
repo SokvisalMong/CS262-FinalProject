@@ -30,6 +30,8 @@ Route::domain(env('APP_URL'))->group(function() {
 Route::domain('www.' .env('APP_URL'))->group(function () {
     Route::get('/', [UserController::class, 'home']);
 
+    Route::get('/aboutus', [UserController::class, 'aboutUs']);
+
     // List of restaurants
     Route::get('/restaurants', [RestaurantController::class, 'list']);
     
@@ -55,15 +57,19 @@ Route::domain('www.' .env('APP_URL'))->group(function () {
         Route::put('/update', [UserController::class, 'update']);
 
         // Logs a user out
+        Route::get('/restaurants', [Restaurant::class, 'showAll']);
+
         Route::post('/logout', [UserController::class, 'logout']);
 
         Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show']);
 
+        Route::get('/bookings', [BookingController::class, 'showAll']);
+
         // Booking page
-        Route::get('/booking/{restaurant}', [RestaurantController::class, 'book']);
+        Route::get('/bookings/{restaurant}', [RestaurantController::class, 'book']);
 
         // Books a restaurant
-        Route::post('/booking/create/{restaurant}', [BookingController::class, 'store']);
+        Route::post('/bookings/create/{restaurant}', [BookingController::class, 'store']);
     });
 });
 

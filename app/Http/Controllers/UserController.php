@@ -25,6 +25,10 @@ class UserController extends Controller
         return view('user.edit')->with('user', auth()->user());
     }
 
+    public function aboutUs() {
+        return view('user.aboutus');
+    }
+
     // Creates a user account and logs them in immediately
     public function store(Request $request) {
         $formFields = $request->validate([
