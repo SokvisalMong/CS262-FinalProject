@@ -5,27 +5,24 @@
 @endsection
 
 @section('content')
-<div class="rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 p-10 flex justify-center">
-    <div class="max-w-sm w-full lg:max-w-full lg:flex">
-        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
-            <img src="{{ asset('images/aria.jpg') }}" alt="placeholder-img">
-        </div>
-            <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                <div class="mb-8">
-                    <a href="">
-                        <p class="text-sm text-gray-600 flex items-center">
-                            <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"></svg>
-                            Restaurant Name
-                        </p>
-                        <div class="text-gray-900 font-bold text-xl mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</div>
-                    </a>
-                </div>
+<div class="">
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+        <div class="rounded overflow-hidden shadow-lg">
+            <div class="w-full">
+                <img src="{{ asset('images/geobasket.jpg') }}" alt="placeholder-img">
             </div>
+                <div class=" border-t border-gray-400  lg:border-t lg:border-gray-400 bg-white p-4 flex flex-col justify-between leading-normal">
+                    <div class="mb-1 px-6 pt-4 pb-2">
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-lg font-semibold text-gray-400 mr-2 mb-2">
+                            Restaurant Name
+                        </span>
+                        <div class="text-gray-700 font-semibold text-xl mb-2 px-6 pt-4 pb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.   
+                        </div>
+                        <button type="button" class="rounded-lg bg-sky-500 hover:bg-sky-700 text-white text-sm text-center font-semibold px-5 py-2 my-4"> More info</button>
+                    </div> 
+                </div> 
+        </div>
     </div>
-
-    
 </div>
 
-
-    
 @endsection
