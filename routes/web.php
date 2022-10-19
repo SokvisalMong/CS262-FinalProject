@@ -22,10 +22,10 @@ use Illuminate\Support\Facades\Route;
 // Redirects non subdomain url to www subdomain
 Route::domain(env('APP_URL'))->group(function() {
     Route::get('/', function() {
-        return redirect('www.' .env('APP_URL'));
+        return redirect('http://www.' .env('APP_URL'));
     });
 });
-
+    
 // User pages
 Route::domain('www.' .env('APP_URL'))->group(function () {
     // Index page
