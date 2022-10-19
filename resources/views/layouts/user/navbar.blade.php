@@ -11,7 +11,7 @@
             </div>
 
             <div class="ml-2">
-                <a href="/bookings" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded"> Manage </a>
+                <a href="/bookings" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded"> View Bookings </a>
             </div>
             
             <div class="ml-2">
