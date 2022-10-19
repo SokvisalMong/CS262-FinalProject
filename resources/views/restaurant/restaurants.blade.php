@@ -10,7 +10,7 @@
     <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         <div class="rounded overflow-hidden shadow-lg">
             <div class="w-full">
-                <img src="{{ asset('images/geobasket.jpg') }}" alt="placeholder-img">
+                <img src="{{$restaurant->picture ? asset('storage/') . $restaurant->picture : asset('/pictures/no-picture.jpeg')}}">
             </div>
             <div class=" border-t border-gray-400  lg:border-t lg:border-gray-400 bg-white p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-1 px-6 pt-4 pb-2">
