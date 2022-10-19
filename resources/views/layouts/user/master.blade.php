@@ -5,12 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>@yield('title')</title>
+
+    {{-- script --}}
+    <script defer src="https://unpkg.com/alpinejs"></script>
 </head>
 <body class="font-sans h-full">
+    
+    @include('layouts.components.alert')
     @include('layouts.user.navbar')
-
     @yield('content')
-
+    
     @include('layouts.user.footer')
+    
 </body>
 </html>

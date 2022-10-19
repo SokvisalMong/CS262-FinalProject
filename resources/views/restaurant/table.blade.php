@@ -66,7 +66,15 @@
                 <td class="py-6 px-7">{{$restaurant->phone}}</td>
                 <td class="py-6 px-7">{{$restaurant->email}}</td>
                 <td class="py-6 px-7">{{$restaurant->description}}</td>
-                <td class="py-6 px-7"></td>
+                <td class="py-6 px-7">
+                    <form method="POST" action="/restaurants/{{$restaurant->id}}">
+                        @csrf
+                        @method('DELETE')
+                        <button>
+                          Delete
+                        </button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
