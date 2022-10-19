@@ -54,14 +54,7 @@
         </div>
 
         <div class="mb-6">
-            <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">Sign Up</button>
-        </div>
-        
-        <div class="mt-8">
-            <p>
-                Already have an account?
-                <a href="/login" class="text-blue-700">Login</a>
-            </p>
+            <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">Create</button>
         </div>
     </form>
 </div>

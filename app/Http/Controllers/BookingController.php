@@ -53,4 +53,10 @@ class BookingController extends Controller
 
         return view('booking.table', ["v_booking" => $booking_db]);
     }
+
+    public function destroy(Booking $booking) {
+        $booking->delete();
+
+        return back()->with('message', 'Booking has been deleted');
+    }
 }

@@ -33,7 +33,8 @@ class RestaurantController extends Controller
             'dress_code' => 'required',
             'price_lower' => ['required', 'numeric'],
             'price_higher' => ['required', 'numeric'],
-        
+            
+            'description' => 'nullable',
             'website' => ['nullable', 'URL', Rule::unique('restaurants', 'website')],
             'phone' => ['nullable', 'numeric', 'min:10', Rule::unique('restaurants', 'phone')],
             'email' => ['nullable', 'email', Rule::unique('restaurants', 'email')],
@@ -63,7 +64,8 @@ class RestaurantController extends Controller
             'dress_code' => 'required',
             'price_lower' => ['required', 'numeric'],
             'price_higher' => ['required', 'numeric'],
-
+            
+            'description' => 'nullable',
             'website' => ['nullable', 'URL', Rule::unique('restaurants')],
             'phone' => ['nullable', 'numeric', 'min:10', Rule::unique('restaurants', 'phone')],
             'email' => ['nullable', 'email', Rule::unique('restaurants', 'email')],
@@ -78,5 +80,11 @@ class RestaurantController extends Controller
         $restaurant_db = Restaurant::all();
 
         return view('restaurant.table', ["v_restaurant" => $restaurant_db]);
+    }
+
+    public function destroy(Restaurant $restaurant) {
+        $restaurant->delete();
+
+        return back()->with('message', 'Restaurant has been deleted.');
     }
 }

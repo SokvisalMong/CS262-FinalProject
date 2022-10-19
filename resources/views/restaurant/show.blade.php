@@ -20,6 +20,7 @@
                 <th>Website</th>
                 <th>Phone</th>
                 <th>Email</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,7 @@
                 <td>{{$restaurant->website}}</td>
                 <td>{{$restaurant->phone}}</td>
                 <td>{{$restaurant->email}}</td>
+                <td>{{$restaurant->description}}</td>
             </tr>
         </tbody>
     </table>

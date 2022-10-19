@@ -43,6 +43,9 @@
                     Email
                 </th>
                 <th scope="col" class="py-6 px-7">
+                    Description
+                </th>
+                <th scope="col" class="py-6 px-7">
                     Delete
                 </th>
                 
@@ -62,6 +65,7 @@
                 <td class="py-6 px-7">{{$restaurant->website}}</td>
                 <td class="py-6 px-7">{{$restaurant->phone}}</td>
                 <td class="py-6 px-7">{{$restaurant->email}}</td>
+                <td class="py-6 px-7">{{$restaurant->description}}</td>
                 <td class="py-6 px-7"></td>
             </tr>
             @endforeach
