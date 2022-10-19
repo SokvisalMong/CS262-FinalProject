@@ -97,9 +97,6 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
     });
 
     Route::middleware(['auth:owner'])->group(function() {
-        // Dashboard for logged in owners
-        // Purpose: unsure
-        Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
         // Page to create restaurant
         Route::get('/restaurants/create', [RestaurantController::class, 'create']);
