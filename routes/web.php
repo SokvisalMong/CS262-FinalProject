@@ -22,10 +22,10 @@ use Illuminate\Support\Facades\Route;
 // Redirects non subdomain url to www subdomain
 Route::domain(env('APP_URL'))->group(function() {
     Route::get('/', function() {
-        return redirect('www.' .env('APP_URL'));
+        return redirect('http://www.' .env('APP_URL'));
     });
 });
-
+    
 // User pages
 Route::domain('www.' .env('APP_URL'))->group(function () {
     // Index page
@@ -148,5 +148,12 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
         Route::get('/tables/owners', [OwnerController::class, 'showtable']);
         Route::get('/tables/bookings', [BookingController::class, 'showtable']);
         Route::get('/tables/restaurant', [RestaurantController::class, 'showtable']);
+
+        // Delete data
+        Route::delete('/users', [UserController::class, 'destroy']);
+        Route::delete('/owners', [OwnerController::class, 'destroy']);
+        Route::delete('/admins', [AdminController::class, 'destroy']);
+        Route::delete('/restaurants', [RestaurantController::class, 'destroy']);
+        Route::delete('/bookings', [BookingController::class, 'destroy']);
     });
 });
