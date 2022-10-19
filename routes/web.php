@@ -113,6 +113,8 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
         // PUT method to update information of a restaurant
         Route::put('/restaurants/update/{restaurant}', [RestaurantController::class, 'update']);
     
+        Route::get('/bookings', [BookingController::class, 'getRestaurantBooking']);
+
         // Logs the owner out of their account.
         Route::post('/logout', [OwnerController::class, 'logout']);
     });
@@ -130,8 +132,6 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
     });
     
     Route::middleware(['auth:admin'])->group(function() {
-        // Dashboard for admins after authenticating
-        Route::get('/dashboard', [AdminController::class, 'dashboard']);
         
         // Page to create more admin users from the default admin account
         Route::get('/register', [AdminController::class, 'register']);
