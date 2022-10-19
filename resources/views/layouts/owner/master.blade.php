@@ -9,14 +9,15 @@
 <body class="font-sans bg-gray-200">
     @auth('owner')
         <div class="flex">
-            @include('layouts.owner.navbar')
+            @include('layouts.owner.sidebar')
             @yield('content')
-            @include('layouts.owner.footer')
+            
         </div>
     @else
         <div class="h-full">
-            @include('layouts.owner.sidebar')
+            @include('layouts.owner.navbar')
             @yield('content')
+            @include('layouts.owner.footer')
         </div>
     @endauth
 </body>
