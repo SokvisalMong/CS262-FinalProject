@@ -5,17 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>Dashboard</title>
+
+    <script defer src="https://unpkg.com/alpinejs"></script>
 </head>
 <body class="font-sans bg-gray-200">
     
     @auth('admin')
         <div class="flex">
+            @include('layouts.components.alert')
             @include('layouts.admin.sidebar')
             @yield('content')
             
         </div>
     @else
         <div class="h-full">
+            @include('layouts.components.alert')
             @include('layouts.admin.navbar')
             @yield('content')
             @include('layouts.admin.footer')

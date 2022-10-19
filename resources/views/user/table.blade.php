@@ -24,13 +24,13 @@
                 <th scope="col" class="py-7 px-14">
                     Phone
                 </th>
-                <th scope="col" class="py-7 px-14">
+                <th scope="col" class="py-7 px-12">
                     First Name
                 </th>
-                <th scope="col" class="py-7 px-14">
+                <th scope="col" class="py-7 px-12">
                     Last Name
                 </th>
-                <th scope="col" class="py-7 px-14">
+                <th scope="col" class="py-7 px-6">
                     Delete
                 </th>
                 
@@ -44,9 +44,17 @@
                     <td class="py-7 px-14">{{$user->email}}</td>
                     <td class="py-7 px-14">{{$user->password}}</td>
                     <td class="py-7 px-14">{{$user->phone}}</td>
-                    <td class="py-7 px-14">{{$user->firstname}}</td>
-                    <td class="py-7 px-14">{{$user->lastname}}</td>
-                    <td class="py-7 px-14"></td>
+                    <td class="py-7 px-12">{{$user->firstname}}</td>
+                    <td class="py-7 px-12">{{$user->lastname}}</td>
+                    <td class="py-7 px-6">
+                        <form method="POST" action="/users/{{$user->id}}">
+                            @csrf
+                            @method('DELETE')
+                            <button>
+                              Delete
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

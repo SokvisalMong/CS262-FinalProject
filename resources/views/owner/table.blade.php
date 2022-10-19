@@ -35,9 +35,11 @@
                 <td class="py-7 px-14">{{$owner->password}}</td>
                 <td class="py-7 px-14">
                     <form method="POST" action="/owners/{{$owner->id}}">
-                    @csrf
-                    @method('DELETE')
-                    <button>Delete</button>
+                        @csrf
+                        @method('DELETE')
+                        <button>
+                          Delete
+                        </button>
                     </form>
                 </td>
             </tr>

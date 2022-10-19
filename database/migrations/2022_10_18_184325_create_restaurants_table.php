@@ -38,7 +38,7 @@ return new class extends Migration
 
             $table->timestamps();
         });
-
+        
         DB::table('restaurants')->insert([[
             'owner_id' => 1,
             'name' => 'restaurant',
