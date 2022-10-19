@@ -14,22 +14,17 @@ class BookingController extends Controller
     // Pages
     public function show() {
         /** @var \App\Models\User $user **/
-        $user = auth()->user();
+        $user = auth('web')->user();
         $bookings = $user->booking()->get();
         return view('booking.bookings', ['bookings' => $bookings]);        
     }
 
     public function getRestaurantBooking() {
-        // /** @var \App\Models\Owner $owner */
-        // $owner = auth('owner')->user();
-        // /** @var \App\Models\Restaurant $restaurant */
-        // $restaurant = $owner->restaurant();
-
-        // $bookings = $restaurant->booking()->get();
-
-
-        $owner_id = auth('owner')->user()->id;
-        $bookings = Booking::find($owner_id);
+        /** @var \App\Models\Owner $owner */
+        $owner = auth('owner')->user();
+        /** @var \App\Models\Restaurant $restaurant */
+        $restaurant = $owner->restaurant()->first();
+        $bookings = $restaurant->booking()->get();
 
         return view('booking.ownertable', ['bookings' => $bookings]);
     }

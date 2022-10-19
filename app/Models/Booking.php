@@ -10,10 +10,10 @@ class Booking extends Model
     use HasFactory;
 
     public function restaurant() {
-        return $this->belongsTo(Restaurant::class, 'restaurant_id');
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function user() {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 }

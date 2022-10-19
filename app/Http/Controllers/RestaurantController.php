@@ -21,7 +21,7 @@ class RestaurantController extends Controller
         return view('booking.book', ['restaurant' => $restaurant]);
     }
     public function showAll() {
-        return view('restaurant.restaurants', ['restaurants' => Restaurant::all()]);
+        return view('restaurant.restaurants', ['restaurants' => Restaurant::latest()->filter(request(['cuisines', 'dress_code', 'search']))->get()]);
     }
 
     public function store(Request $request) {
