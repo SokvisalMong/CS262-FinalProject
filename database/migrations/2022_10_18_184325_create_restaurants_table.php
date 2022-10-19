@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('price_higher');
 
             // Nullable
+            $table->text('description')->nullable();
             $table->string('website')->unique()->nullable();
             $table->string('phone')->unique()->nullable();
             $table->string('email')->unqiue()->nullable();
