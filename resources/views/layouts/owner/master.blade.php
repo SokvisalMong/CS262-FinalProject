@@ -4,13 +4,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>@yield('title')</title>
+    <title>Dashboard</title>
 </head>
-<body class="mx-40 font-sans">
-    @include('layouts.owner.navbar')
-    
-    @yield('content')
-
-    @include('layouts.owner.footer')
+<body class="font-sans bg-gray-200">
+    @auth('owner')
+        <div class="flex">
+            @include('layouts.owner.sidebar')
+            @yield('content')
+            
+        </div>
+    @else
+        <div class="h-full">
+            @include('layouts.owner.navbar')
+            @yield('content')
+            @include('layouts.owner.footer')
+        </div>
+    @endauth
 </body>
 </html>
