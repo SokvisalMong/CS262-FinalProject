@@ -33,7 +33,13 @@
                 <td class="py-7 px-14">{{$owner->name}}</td>
                 <td class="py-7 px-14">{{$owner->email}}</td>
                 <td class="py-7 px-14">{{$owner->password}}</td>
-                <td class="py-7 px-14"></td>
+                <td class="py-7 px-14">
+                    <form method="POST" action="/owners/{{$owner->id}}">
+                    @csrf
+                    @method('DELETE')
+                    <button>Delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

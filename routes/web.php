@@ -25,7 +25,7 @@ Route::domain(env('APP_URL'))->group(function() {
         return redirect('http://www.' .env('APP_URL'));
     });
 });
-    
+
 // User pages
 Route::domain('www.' .env('APP_URL'))->group(function () {
     // Index page
@@ -150,10 +150,10 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
         Route::get('/tables/restaurant', [RestaurantController::class, 'showtable']);
 
         // Delete data
-        Route::delete('/users', [UserController::class, 'destroy']);
-        Route::delete('/owners', [OwnerController::class, 'destroy']);
-        Route::delete('/admins', [AdminController::class, 'destroy']);
-        Route::delete('/restaurants', [RestaurantController::class, 'destroy']);
-        Route::delete('/bookings', [BookingController::class, 'destroy']);
+        Route::delete('/users/{user}', [UserController::class, 'destroy']);
+        Route::delete('/owners/{owner}', [OwnerController::class, 'destroy']);
+        Route::delete('/admins/{admin}', [AdminController::class, 'destroy']);
+        Route::delete('/restaurants/{restaurant}', [RestaurantController::class, 'destroy']);
+        Route::delete('/bookings/{booking}', [BookingController::class, 'destroy']);
     });
 });
