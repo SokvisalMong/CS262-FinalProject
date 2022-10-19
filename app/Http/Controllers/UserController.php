@@ -95,6 +95,6 @@ class UserController extends Controller
     public function showtable() {
         $user_db = User::all();
 
-        return view('user.table', ["v_user" => $user_db]);
+        return view('admin.usertable', ["v_user" => $user_db]);
     }
 }

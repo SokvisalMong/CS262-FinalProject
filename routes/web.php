@@ -148,5 +148,9 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
         Route::get('/tables/owners', [OwnerController::class, 'showtable']);
         Route::get('/tables/bookings', [BookingController::class, 'showtable']);
         Route::get('/tables/restaurant', [RestaurantController::class, 'showtable']);
+
+        // Dashboard form
+        Route::get('/forms/admins', [AdminController::class, 'adminform']);
+        Route::get('/forms/bookings', [BookingController::class, 'bookingform']);
     });
 });

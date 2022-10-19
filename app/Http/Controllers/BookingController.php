@@ -51,6 +51,10 @@ class BookingController extends Controller
     public function showtable() {
         $booking_db = Booking::all();
 
-        return view('booking.table', ["v_booking" => $booking_db]);
+        return view('admin.bookingtable', ["v_booking" => $booking_db]);
+    }
+
+    public function bookingform() {
+        return view('admin.bookingform');
     }
 }
