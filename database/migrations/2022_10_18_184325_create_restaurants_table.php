@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -38,7 +39,7 @@ return new class extends Migration
 
             $table->timestamps();
         });
-        
+
         DB::table('restaurants')->insert([[
             'owner_id' => 1,
             'name' => 'restaurant',
