@@ -20,16 +20,11 @@ class BookingController extends Controller
     }
 
     public function getRestaurantBooking() {
-        // /** @var \App\Models\Owner $owner */
-        // $owner = auth('owner')->user();
-        // /** @var \App\Models\Restaurant $restaurant */
-        // $restaurant = $owner->restaurant();
-
-        // $bookings = $restaurant->booking()->get();
-
-
-        $owner_id = auth('owner')->user()->id;
-        $bookings = Booking::find($owner_id);
+        /** @var \App\Models\Owner $owner */
+        $owner = auth('owner')->user();
+        /** @var \App\Models\Restaurant $restaurant */
+        $restaurant = $owner->restaurant()->first();
+        $bookings = $restaurant->booking()->get();
 
         return view('booking.ownertable', ['bookings' => $bookings]);
     }
