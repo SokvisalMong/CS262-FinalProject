@@ -1,3 +1,10 @@
+@extends('layouts.admin.master')
+
+@section('title')
+{{'Users Table'}}
+@endsection
+
+@section('content')
 <div>
     <table>
         <thead>
@@ -26,3 +33,4 @@
         </tbody>
     </table>
 </div>
+@stop

@@ -1,5 +1,9 @@
 @extends('layouts.user.master')
 
+@section('title')
+{{'Register'}}
+@endsection
+
 @section('content')
 <div>
     <form method="POST" action="/users">

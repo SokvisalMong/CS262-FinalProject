@@ -1,5 +1,9 @@
 @extends('layouts.user.master')
 
+@section('title')
+{{'Edit'}}
+@endsection
+
 @section('content')
 <form method="POST" action="/update">
     @csrf

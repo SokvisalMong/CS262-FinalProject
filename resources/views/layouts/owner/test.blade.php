@@ -1,16 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>@yield('title')</title>
+    <title>Document</title>
 </head>
-<body class="mx-40 font-sans">
-    @include('layouts.user.navbar')
-
+<body>
+    @include('layouts.admin.header')
+    
     @yield('content')
 
-    @include('layouts.user.footer')
+    @include('layouts.admin.foote')
 </body>
 </html>

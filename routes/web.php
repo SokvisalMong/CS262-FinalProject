@@ -98,6 +98,12 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
         // Purpose: unsure
         Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
+        // Page to create restaurant
+        Route::get('/restaurants/create', [RestaurantController::class, 'create']);
+
+        // Post method to create restaurant
+        Route::post('/restaurants', [RestaurantController::class, 'store']);
+
         // Page to edit restaurant details
         Route::get('/restaurants/edit/{restaurant}', [RestaurantController::class, 'edit']);
 
@@ -117,7 +123,7 @@ Route::domain('admin.' .env('APP_URL'))->group(function() {
         // Login page for admin users
         Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
     
-        Route::get('/authenticate', [AdminController::class, 'authenticate']);
+        Route::post('/authenticate', [AdminController::class, 'authenticate']);
     });
     
     Route::middleware(['auth:admin'])->group(function() {
