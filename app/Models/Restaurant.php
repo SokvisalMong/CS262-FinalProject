@@ -10,10 +10,10 @@ class Restaurant extends Model
     use HasFactory;
 
     public function owner() {
-        return $this->belongsTo(Owner::class, 'owner_id');
+        return $this->belongsTo(Owner::class);
     }
 
     public function booking() {
-        return $this->hasMany(Booking::class, 'restaurant_id');
+        return $this->hasMany(Booking::class);
     }
 }
