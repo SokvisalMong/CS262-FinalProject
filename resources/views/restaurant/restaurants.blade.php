@@ -7,7 +7,7 @@
 @section('content')
 <div>
     @include('layouts.components.search')
-    <h1 class="text-center font-bold text-4xl pt-6">Available Restaurants in Phnom Penh City</h1>
+    <h1 class="text-center font-bold text-4xl pt-2">Available Restaurants in Phnom Penh City</h1>
     <div class="flex">
         @include('layouts.components.filter')
         @foreach($restaurants as $restaurant)
