@@ -21,10 +21,6 @@ class OwnerController extends Controller
         return view('owner.register');
     }
 
-    public function dashboard() {
-        return view('owner.dashboard');
-    }
-
     public function store(Request $request) {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
@@ -38,7 +34,7 @@ class OwnerController extends Controller
 
         auth('owner')->login($owner);
 
-        return redirect('/dashboard')->with('message', 'Owner created and logged in.');
+        return redirect('/')->with('message', 'Owner created and logged in.');
     }
 
     public function authenticate(Request $request) {
@@ -50,7 +46,7 @@ class OwnerController extends Controller
         if(auth('owner')->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('/dashboard')->with('message', 'You are now logged in.');
+            return redirect('/')->with('message', 'You are now logged in.');
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');

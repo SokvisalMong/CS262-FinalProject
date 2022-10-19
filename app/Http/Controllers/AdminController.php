@@ -13,10 +13,6 @@ class AdminController extends Controller
         return view('admin.home');
     }
 
-    public function dashboard() {
-        return view('admin.dashboard');
-    }
-
     public function login() {
         return view('admin.login');
     }
@@ -48,7 +44,7 @@ class AdminController extends Controller
         if(auth('admin')->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('/dashboard')->with('message', 'You are now logged in.');
+            return redirect('/')->with('message', 'You are now logged in.');
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');

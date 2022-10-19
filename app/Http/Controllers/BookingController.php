@@ -19,6 +19,15 @@ class BookingController extends Controller
         return view('booking.bookings', ['bookings' => $bookings]);        
     }
 
+    public function getRestaurantBooking() {
+        /** @var \App\Models\Owner $owner */
+
+        $owner = auth('owner')->user();
+        $bookings = $owner->restaurant()->booking()->get();
+    
+        return view('booking.ownertable', ['bookings' => $bookings]);
+    }
+
     public function store(Request $request, Restaurant $restaurant) {    
         $formFields = $request->validate([
             'status' => 'nullable',
