@@ -66,6 +66,6 @@ class AdminController extends Controller
     public function showtable() {
         $admin_db = Admin::all();
 
-        return view('admin.showtable', ["v_admin" => $admin_db]);
+        return view('admin.table', ["v_admin" => $admin_db]);
     }
 }
