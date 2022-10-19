@@ -68,13 +68,16 @@ Route::domain('www.' .env('APP_URL'))->group(function () {
         
         // User's previous and present bookings page
         // Should be sorted by Active, Canceled, Completed
-        Route::get('/bookings', [BookingController::class, 'showAll']);
+        Route::get('/bookings', [BookingController::class, 'show']);
 
         // Booking page
         Route::get('/bookings/{restaurant}', [RestaurantController::class, 'book']);
 
         // Books a restaurant
         Route::post('/bookings/create/{restaurant}', [BookingController::class, 'store']);
+
+        // Changes the status enum value to Canceled
+        Route::put('/bookings/cancel/{booking}', [BookingController::class, 'cancel']);
     });
 });
 
