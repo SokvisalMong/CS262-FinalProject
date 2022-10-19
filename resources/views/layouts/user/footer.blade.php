@@ -1,4 +1,4 @@
-<div class="text-center text-white bg-gray-800 inset-x-0 bottom-0">
+<div class="text-center text-white bg-gray-800 inset-x-0 absolute bottom-0">
     {{-- github logo and text --}}
     <div class="py-9 flex justify-center">
         {{-- logo --}}
