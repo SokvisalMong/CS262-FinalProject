@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div>
+<div class="text-center text-bold text-7xl">
     <h1>This is owner dashboard.</h1>
 </div>
 @stop

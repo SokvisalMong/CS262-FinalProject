@@ -1,4 +1,4 @@
-<nav class="bg-gray-800 flex justify-between px-16 py-5 sticky top-0">
+<nav class="bg-gray-800 flex justify-between px-96 py-5 sticky top-0">
     {{-- logo on the left --}}
     <div class="text-white font-bold">
         <a href="/">LOGO</a>

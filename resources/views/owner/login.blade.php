@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="bg-gray-50 border border-gray-200 rounded p-6">
+<div class="bg-gray-50 border border-gray-200 rounded pb-72 pt-16">
     <div class="p-10 max-w-lg mx-auto mt-10">
         <h1 class="text-center text-4xl pb-8">Owner Credential</h1>
         <form method="POST" action="/authenticate">
