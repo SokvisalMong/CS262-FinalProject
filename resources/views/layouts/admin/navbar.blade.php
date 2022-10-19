@@ -31,7 +31,7 @@
                 <button class="bg_blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded">
                     <a href="/login">Log In</a>
                 </button>
-            </div>
+            </div> 
         @endauth
     </div>
 </nav>
