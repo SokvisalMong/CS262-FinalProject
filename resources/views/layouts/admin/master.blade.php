@@ -8,10 +8,17 @@
 </head>
 <body class="font-sans bg-gray-200">
     
-    <div class="flex">
-        @include('layouts.admin.sidebar')
-        @yield('content')
-    </div>
+    @auth('admin')
+        <div class="flex">
+            @include('layouts.admin.sidebar')
+            @yield('content')
+        </div>
+    @else
+        <div class="font-sans h-full">
+            @include('layouts.admin.navbar')
+            @yield('content')
+        </div>
+    @endauth
 
 </body>
 </html>

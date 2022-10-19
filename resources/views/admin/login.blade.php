@@ -1,4 +1,4 @@
-@extends('layouts.user.master')
+@extends('layouts.admin.master')
 
 @section('title')
 {{'Log In'}}
