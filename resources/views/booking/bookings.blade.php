@@ -9,6 +9,16 @@
     <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <div>
             <table>
+                <thead>
+                    <tr>
+                        <td>Restaurant Name</td>
+                        <td>Booking Date</td>
+                        <td>Booking Time</td>
+                        <td>Party Size</td>
+                        <td>Status</td>
+                        <td>Cancel</td>
+                    </tr>
+                </thead>
                 <tbody>
                     @unless($bookings->isEmpty())
                     @foreach($bookings as $booking)

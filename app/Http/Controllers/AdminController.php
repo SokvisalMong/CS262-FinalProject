@@ -32,7 +32,7 @@ class AdminController extends Controller
 
         Admin::create($formFields);
 
-        return redirect('/dashboard')->with('message', 'New admin account has been created.');
+        return redirect('/tables/admins')->with('message', 'New admin account has been created.');
     }
 
     public function authenticate(Request $request) {

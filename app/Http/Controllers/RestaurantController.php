@@ -154,6 +154,10 @@ class RestaurantController extends Controller
         $formFields['cuisines'] = $request->cuisines;
         $formFields['dress_code'] = $request->dress_code;
 
+        if($request->hasFile('picture')) {
+            $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
+        }
+
         $restaurant->update($formFields);
 
         return back()->with('message', 'Restaurant has been updated');
