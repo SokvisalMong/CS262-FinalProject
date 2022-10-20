@@ -20,6 +20,14 @@
             </div>
 
             <div>
+                <label for="hoo" class="inline-block text-lg mb-2"> Payment</label>
+                <input type="text" name="payment" value="{{$restaurant->payment}}" class="border border-gray-200 rounded p-2 w-full">
+                @error('payment')
+                    <p>{{$message}}</p>
+                @enderror
+            </div>  
+
+            <div>
                 <label for="hoo" class="inline-block text-lg mb-2"> HOO</label>
                 <input type="text" name="hoo" value="{{$restaurant->hoo}}" class="border border-gray-200 rounded p-2 w-full">
                 @error('hoo')

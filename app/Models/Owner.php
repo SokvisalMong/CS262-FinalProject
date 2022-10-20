@@ -47,4 +47,8 @@ class Owner extends Authenticatable
     public function restaurant() {
         return $this->hasOne(Restaurant::class, 'owner_id');
     }
+
+    public function id() {
+        return $this->id;
+    } 
 }
