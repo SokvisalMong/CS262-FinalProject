@@ -49,10 +49,10 @@ class RestaurantController extends Controller
         }
 
         $formFields['owner_id'] = auth('owner')->id();
-        
+
         $restaurant = Restaurant::create($formFields);
 
-        return redirect('/restaurants/' .$restaurant->id)->with('message', 'Restaurant has been created');
+        return redirect('/')->with('message', 'Restaurant has been created');
     }
 
     public function update(Request $request, Restaurant $restaurant) {

@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -27,7 +28,17 @@ return new class extends Migration
             $table->integer('size');
 
             $table->timestamps();
+
         });
+        
+        DB::table('bookings')->insert([[
+            'restaurant_id' => 1,
+            'user_id' => 1,
+            'status' => 'Active',
+            'date' => '2022-10-20',
+            'time' => '18:30:15',
+            'size' => 5
+        ]]);
     }
 
     /**

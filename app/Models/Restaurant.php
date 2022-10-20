@@ -9,6 +9,23 @@ class Restaurant extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'owner_id',
+        'name',
+        'payment',
+        'hoo',
+        'cuisines',
+        'dress_code',
+        'price_lower',
+        'price_higher',
+
+        'description',
+        'website',
+        'phone',
+        'email',
+        'picture'
+    ];
+
     public function scopeFilter($query, array $filters) {
         if($filters['cuisines'] ?? false) {
             $query->where('cuisines', 'like', '%'. request('cuisines') . '%');

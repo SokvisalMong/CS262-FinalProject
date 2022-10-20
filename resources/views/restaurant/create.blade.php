@@ -1,4 +1,4 @@
-@extends('layouts.user.master')
+@extends('layouts.owner.master')
 
 @section('title')
 {{'Register'}}
@@ -8,17 +8,8 @@
 <div class="bg-gray-50 border border-gray-200 rounded p-6">
     <div class="p-10 max-w-lg mx-auto mt-10">
         <h1 class="text-center text-4xl pb-8">Create Restaurant</h1>
-        <form method="POST" action="/">
+        <form method="POST" action="/restaurants" enctype="multipart/form-data">
             @csrf
-            <div class="mb-6">
-                <label for="owner_id" class="inline-block text-lg mb-2"> Owner ID </label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="owner_id" />
-
-                @error('owner_id')
-                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                @enderror
-            </div>
-
             <div class="mb-6">
                 <label for="name" class="inline-block text-lg mb-2"> Name </label>
                 <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"/>
@@ -111,9 +102,18 @@
 
             <div class="mb-6">
                 <label for="picture" class="inline-block text-lg mb-2"> Picture </label>
-                <input type="file_input" class="border border-gray-200 rounded p-2 w-full" name="picture"/>
+                <input type="file" class="border border-gray-200 rounded p-2 w-full" name="picture"/>
 
                 @error('picture')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="description" class="inline-block text-lg mb-2"> Description </label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="description"/>
+
+                @error('description')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
             </div>

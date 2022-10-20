@@ -94,6 +94,8 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
 
         // Register page for owners
         Route::get('/register', [OwnerController::class, 'register']);
+
+        Route::post('/owners', [OwnerController::class, 'store']);
     });
 
     Route::middleware(['auth:owner'])->group(function() {
@@ -114,6 +116,10 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
 
         // Logs the owner out of their account.
         Route::post('/logout', [OwnerController::class, 'logout']);
+
+        Route::put('/bookings/cancel/{booking}', [BookingController::class, 'ownerCancel']);
+
+        Route::put('/bookings/complete/{booking}', [BookingController::class, 'complete']);
     });
 });
 

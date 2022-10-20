@@ -15,12 +15,4 @@
             <p>{{message}}</p>
         @enderror
     </div>
-
-    <div>
-        <label for="name">Restaurant Name</label>
-        <input type="name" name="name" value="{{$restaurant->name}}">
-        @error('name')
-            <p>{{message}}</p>
-        @enderror
-    </div>    
 </form>
