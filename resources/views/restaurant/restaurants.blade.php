@@ -43,7 +43,7 @@
             @endforeach
             @else
             <div>
-                <p>Result not found.</p>
+                <p class="text-black text-2xl">Result not found.</p>
             </div>
             @endunless
         </div>

@@ -6,8 +6,9 @@
 
 @section('content')
 
-<div class="mx-20 mt-14">
-    <h1 class="text-center text-4xl pb-8 text-black"> Booking List</h1>
+<div class="mx-auto w-full">
+    {{-- <h1 class="text-center text-4xl pb-8 text-black mt-12"> Booking List</h1> --}}
+    @unless($bookings->isEmpty())
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-sm text-black uppercase bg-gray-50 dark:bg-gray-700 dark:text-white">
             <tr>
@@ -35,7 +36,6 @@
             </tr>
         </thead>
         <tbody>
-            @unless($bookings->isEmpty())
             @foreach($bookings as $booking)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <td class="py-7 px-14 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$booking->user()->first()->name}}</td>
@@ -70,12 +70,11 @@
             @else
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <td class="py-7 px-14">
-                    <p>No Bookings Found.</p>
-            </td>
-        </tr>
-        @endunless
+                    <p class="text-black text-2xl">No Bookings Found.</p>
+                </td>
+            </tr>
         </tbody>
     </table>
-
+    @endunless
 </div> 
 @stop
