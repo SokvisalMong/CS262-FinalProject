@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div class="bg-gray-50 border border-gray-200 rounded px-20">
-    <div class="max-w-lg mx-auto mt-10">
+<div class="bg-gray-50 border border-gray-200 rounded px-20 my-auto mx-auto">
+    <div class="max-w-lg mx-auto rounded-3xl pt-6">
         <h1 class="text-center text-4xl pb-8">Edit Restaurant</h1>
         <form method="POST" action="/restaurants/update/{{$restaurant->id}}" enctype="multipart/form-data">
             @csrf
