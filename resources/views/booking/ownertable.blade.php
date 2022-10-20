@@ -22,7 +22,6 @@
                 @unless($bookings->isEmpty())
                 @foreach($bookings as $booking)
                 <tr>
-                    <td></td>
                     <td>{{$booking->date}}</td>
                     <td>{{$booking->time}}</td>
                     <td>{{$booking->size}}</td>
