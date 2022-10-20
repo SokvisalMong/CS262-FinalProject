@@ -10,7 +10,7 @@
         @if($restaurant->picture == NULL)
         <img src="{{asset('/pictures/no-image.png')}}" alt="no-picture">
         @else
-        <img src="{{'storage/'. $restauraunt->picture}}" alt="restaurant-picture">
+        <img src="{{asset('storage/'. $restaurant->picture)}}" alt="restaurant-picture">
         @endif
     </div>
 </div>
