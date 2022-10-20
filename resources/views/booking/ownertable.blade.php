@@ -1,4 +1,4 @@
-@extends('layouts.user.master')
+@extends('layouts.owner.master')
 
 @section('title')
 {{'Restaurant Bookings'}}
@@ -18,7 +18,7 @@
                     <td>{{$booking->size}}</td>
                     <td>{{$booking->status}}</td>
                     <td>
-                        <form method="POST" action="">
+                        <form method="POST" action="/bookings/cancel/{{$booking->id}}">
                         @csrf
                         @method('PUT')
                             <button>
@@ -27,7 +27,7 @@
                         </form>
                     </td>
                     <td>
-                        <form method="POST" action="">
+                        <form method="POST" action="/bookings/complete/{{$booking->id}}">
                         @csrf
                         @method('PUT')
                             <button>

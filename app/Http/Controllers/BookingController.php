@@ -58,6 +58,35 @@ class BookingController extends Controller
         return back()->with('message', 'Booking has been canceled.');
     }
 
+    public function ownerCancel(Booking $booking) {
+        $owner_id = $booking->restaurant()->first()->id;
+
+        if(auth('owner')->id() != $owner_id) {
+            abort(403, 'Unauthorized Action');
+        }
+
+        $booking->update([
+            'status' => 'Canceled',
+        ]);
+
+        return back()->with('message', 'Booking has been canceled.');
+    }
+
+    public function complete(Booking $booking) {
+        $owner_id = $booking->restaurant()->first()->id;
+
+        if(auth('owner')->id() != $owner_id) {
+            abort(403, 'Unauthorized Action');
+        }
+
+        $booking->update([
+            'status' => 'Completed',
+        ]);
+
+        return back()->with('message', 'Booking has been completed');
+    }
+
+
     public function showtable() {
         $booking_db = Booking::all();
 

@@ -13,12 +13,13 @@
                     @unless($bookings->isEmpty())
                     @foreach($bookings as $booking)
                     <tr>
-                        <td>{{Restaurant::find($booking->restaurant_id)->name}}</td>
+                        <td>{{$booking->restaurant()->first()->name}}</td>
                         <td>{{$booking->date}}</td>
                         <td>{{$booking->time}}</td>
                         <td>{{$booking->size}}</td>
                         <td>{{$booking->status}}</td>
                         <td>
+                            @if($booking->status == 'Active')
                             <form method="POST" action="/bookings/cancel/{{$booking->id}}">
                             @csrf
                             @method('PUT')
@@ -26,6 +27,9 @@
                                     Cancel
                                 </button>
                             </form>
+                            @else
+                            
+                            @endif
                         </td>
                     </tr>
                     @endforeach
