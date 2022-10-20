@@ -61,7 +61,7 @@ class RestaurantController extends Controller
         }
 
         $formFields = $request->validate([
-            'name' => ['required', 'min:3', Rule::unique('restaurants', 'name')],
+            'name' => ['required', 'min:3'],
             'payment' => ['required'],
             'hoo' => 'required',
             'cuisines' => 'required',
@@ -70,9 +70,9 @@ class RestaurantController extends Controller
             'price_higher' => ['required', 'numeric'],
             
             'description' => 'nullable',
-            'website' => ['nullable', 'URL', Rule::unique('restaurants')],
-            'phone' => ['nullable', 'numeric', 'min:10', Rule::unique('restaurants', 'phone')],
-            'email' => ['nullable', 'email', Rule::unique('restaurants', 'email')],
+            'website' => ['nullable'],
+            'phone' => ['nullable', 'numeric', 'min:10'],
+            'email' => ['nullable', 'email'],
         ]);
 
         $restaurant->update($formFields);
