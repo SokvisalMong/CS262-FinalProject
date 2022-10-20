@@ -29,6 +29,41 @@ class RestaurantController extends Controller
     }
 
     public function store(Request $request) {
+        $request['payment'] = [
+            $request->cash,
+            $request->visa,
+            $request->mastercard,
+            $request->aba
+        ];
+
+        $request['payment'] = array_filter($request['payment']);
+
+        $request->payment = implode(',', $request['payment']);
+
+        $request['cuisines'] = [
+            $request->khmer,
+            $request->western,
+            $request->chinese,
+            $request->vietnamese,
+            $request->int
+        ];
+
+        $request['cuisines'] = array_filter($request['cuisines']);
+
+        $request->cuisines = implode(',', $request['cuisines']);
+
+        $request['dress_code'] = [
+            $request->casual, 
+            $request->b_casual, 
+            $request->e_casual,
+            $request->formal,
+            $request->jacket
+        ];
+
+        $request['dress_code'] = array_filter($request['dress_code']);
+
+        $request->dress_code = implode(',', $request['dress_code']);
+
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
             'payment' => 'required',
@@ -50,6 +85,11 @@ class RestaurantController extends Controller
 
         $formFields['owner_id'] = auth('owner')->id();
 
+        
+        $formFields['payment'] = $request->payment;
+        $formFields['cuisines'] = $request->cuisines;
+        $formFields['dress_code'] = $request->dress_code;
+
         Restaurant::create($formFields);
 
         return redirect('/')->with('message', 'Restaurant has been created');
@@ -60,9 +100,44 @@ class RestaurantController extends Controller
             abort(403, 'Unauthorized Action.');
         }
 
+        $request['payment'] = [
+            $request->cash,
+            $request->visa,
+            $request->mastercard,
+            $request->aba
+        ];
+
+        $request['payment'] = array_filter($request['payment']);
+
+        $request->payment = implode(',', $request['payment']);
+
+        $request['cuisines'] = [
+            $request->khmer,
+            $request->western,
+            $request->chinese,
+            $request->vietnamese,
+            $request->int
+        ];
+
+        $request['cuisines'] = array_filter($request['cuisines']);
+
+        $request->cuisines = implode(',', $request['cuisines']);
+
+        $request['dress_code'] = [
+            $request->casual, 
+            $request->b_casual, 
+            $request->e_casual,
+            $request->formal,
+            $request->jacket
+        ];
+
+        $request['dress_code'] = array_filter($request['dress_code']);
+
+        $request->dress_code = implode(',', $request['dress_code']);
+
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
-            'payment' => ['required'],
+            'payment' => 'required',
             'hoo' => 'required',
             'cuisines' => 'required',
             'dress_code' => 'required',
@@ -74,6 +149,10 @@ class RestaurantController extends Controller
             'phone' => ['nullable', 'numeric', 'min:10'],
             'email' => ['nullable', 'email'],
         ]);
+
+        $formFields['payment'] = $request->payment;
+        $formFields['cuisines'] = $request->cuisines;
+        $formFields['dress_code'] = $request->dress_code;
 
         $restaurant->update($formFields);
 
