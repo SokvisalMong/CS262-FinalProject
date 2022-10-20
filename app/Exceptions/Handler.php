@@ -56,15 +56,14 @@ class Handler extends ExceptionHandler
         }
 
         $guard = data_get($exception->guards(), 0);
-        switch ($guard) {
-            case 'admin':
-                $login = 'admin.login';
-                break;
-            case 'owner':
-                $login = 'owner.login';
-            default:
-                $login = 'login';
-                break;
+        if ($guard == 'admin') {
+            $login = 'admin.login';
+        }
+        elseif ($guard == 'owner') {
+            $login = 'owner.login';
+        }
+        else {
+            $login = 'login';
         }
         return redirect()->guest(route($login));
     }
