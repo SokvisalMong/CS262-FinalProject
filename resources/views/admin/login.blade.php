@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="bg-gray-50 border border-gray-200 rounded p-6">
+<div class="bg-gray-50 border border-gray-200 rounded p-6 pb-56 pt-24">
     <div class="p-10 max-w-lg mx-auto mt-10">
         <h1 class="text-center text-4xl pb-16">Admin Dashboard</h1>
         <form method="POST" action="/authenticate">
