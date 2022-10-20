@@ -17,7 +17,7 @@
                 <div class="rounded overflow-hidden shadow-lg">
                     <div class="w-full">
                         @if($restaurant->picture == NULL)
-                        <img src="{{asset('/pictures/no-picture.jpeg')}}" alt="no-picture">
+                        <img src="{{asset('/pictures/no-image.png')}}" alt="no-picture">
                         @else
                         <img src="{{'storage/'. $restaurant->picture}}" alt="placeholder-img">
                         @endif
