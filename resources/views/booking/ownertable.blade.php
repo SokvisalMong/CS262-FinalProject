@@ -8,6 +8,16 @@
 <div class="mx-20 mt-14 text-white">
     <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <table>
+            <thead>
+                <tr>
+                    <td>Date</td>
+                    <td>Time</td>
+                    <td>Size</td>
+                    <td>Status</td>
+                    <td>Cancel</td>
+                    <td>Complete</td>
+                </tr>
+            </thead>
             <tbody>
                 @unless($bookings->isEmpty())
                 @foreach($bookings as $booking)
@@ -18,6 +28,7 @@
                     <td>{{$booking->size}}</td>
                     <td>{{$booking->status}}</td>
                     <td>
+                        @if($booking->status == 'Active')
                         <form method="POST" action="/bookings/cancel/{{$booking->id}}">
                         @csrf
                         @method('PUT')
@@ -25,8 +36,10 @@
                                 Cancel
                             </button>
                         </form>
+                        @endif
                     </td>
                     <td>
+                        @if($booking->status == 'Active')
                         <form method="POST" action="/bookings/complete/{{$booking->id}}">
                         @csrf
                         @method('PUT')
@@ -34,6 +47,7 @@
                                 Complete
                             </button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

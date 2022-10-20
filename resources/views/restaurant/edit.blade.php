@@ -8,7 +8,7 @@
 <div class="bg-gray-50 border border-gray-200 rounded px-20">
     <div class="max-w-lg mx-auto mt-10">
         <h1 class="text-center text-4xl pb-8">Edit Restaurant</h1>
-        <form method="POST" action="/restaurants/update/{{$restaurant->id}}" class="">
+        <form method="POST" action="/restaurants/update/{{$restaurant->id}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div>

@@ -30,20 +30,22 @@ class BookingController extends Controller
     }
 
     public function store(Request $request, Restaurant $restaurant) {    
+        // dd($request['date']);
+        
         $formFields = $request->validate([
             'status' => 'nullable',
-            'date' => ['required', 'date_format:o:m:d'],
-            'time' => ['required', 'date_format:H:i:s'],
+            'date' => ['required'],
+            'time' => ['required'],
             'size' => ['required', 'numeric'],
         ]);
 
         $formFields['status'] = 'Active';
-        $formFields['user_id'] = auth()->id;
+        $formFields['user_id'] = auth()->id();
         $formFields['restaurant_id'] = $restaurant->id;
 
         Booking::create($formFields);
         
-        return back()->with('message', 'Booking has been created.');
+        return redirect('/bookings')->with('message', 'Booking has been created.');
     }
 
     public function cancel(Booking $booking) {
