@@ -34,12 +34,12 @@ return new class extends Migration
 
         // Inserts default user
         DB::table('users')->insert([[
-            'name' => 'user',
-            'email' => 'user@email.com',
+            'name' => 'Johnny',
+            'email' => 'john@email.com',
             'password' => bcrypt('password'),
             'phone' => '012345678',
-            'firstname' => 'first',
-            'lastname' => 'last',
+            'firstname' => 'John',
+            'lastname' => 'Sins',
         ]]);
     }
 

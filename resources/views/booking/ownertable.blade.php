@@ -10,6 +10,7 @@
         <table>
             <thead>
                 <tr>
+                    <td>Name</td>
                     <td>Date</td>
                     <td>Time</td>
                     <td>Size</td>
@@ -22,6 +23,7 @@
                 @unless($bookings->isEmpty())
                 @foreach($bookings as $booking)
                 <tr>
+                    <td>{{$booking->user()->first()->name}}</td>
                     <td>{{$booking->date}}</td>
                     <td>{{$booking->time}}</td>
                     <td>{{$booking->size}}</td>

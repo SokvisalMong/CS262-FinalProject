@@ -36,8 +36,8 @@ return new class extends Migration
             'user_id' => 1,
             'status' => 'Active',
             'date' => '2022-10-20',
-            'time' => '18:30:15',
-            'size' => 5
+            'time' => '18:00:00',
+            'size' => 1
         ]]);
     }
 

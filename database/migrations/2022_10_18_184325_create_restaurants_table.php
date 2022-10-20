@@ -41,18 +41,18 @@ return new class extends Migration
 
         DB::table('restaurants')->insert([[
             'owner_id' => 1,
-            'name' => 'restaurant',
+            'name' => 'McDonalds',
             'payment' => 'Cash',
-            'hoo' => '6AM - 6PM',
-            'cuisines' => 'Khmer',
+            'hoo' => '7AM - 6PM',
+            'cuisines' => 'Western',
             'dress_code' => 'Casual',
             'price_lower' => 5,
             'price_higher' => 10,
 
-            'description' => 'text',
-            'website' => 'www.site.com',
+            'description' => "McDonald's Corporation is an American-based multinational fast food chain, founded in 1940 as a restaurant operated by Richard and Maurice McDonald, in San Bernardino, California, United States.",
+            'website' => 'www.mcdonalds.com',
             'phone' => '012345678',
-            'email' => 'restaurant@email.com',
+            'email' => 'mcdonalds@email.com',
         ]]);
     }
 
