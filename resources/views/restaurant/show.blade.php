@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-<div class="w-full my-auto">
+<div class="w-full my-auto flex justify-center">
     <div class="bg-cover max-w-7xl mx-auto">
         @if($restaurant->picture == NULL)
         <img src="{{asset('/pictures/no-image.png')}}" alt="no-picture">
         @else
-        <img src="{{'storage/'. $restauraunt->picture}}" alt="restaurant-picture">
+        <img src="{{asset('storage/'. $restaurant->picture)}}" alt="restaurant-picture">
         @endif
     </div>
 </div>
