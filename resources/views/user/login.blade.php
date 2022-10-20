@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div class="bg-gray-50 border border-gray-200 rounded p-6">
-    <div class="p-10 max-w-lg mx-auto mt-10">
+<div class="bg-gray-50 border border-gray-200 rounded p-6 m-auto">
+    <div class="px-12 py-4 max-w-lg mx-auto rounded-3xl">
         <h1 class="text-center text-4xl pb-8">Login</h1>
         <form method="POST" action="/authenticate">
             @csrf
