@@ -5,13 +5,16 @@
     </div>
     {{-- sign up/in button on the right --}}
     <div class="flex">
+        <div class="ml-2">
+            <a type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded" href="/restaurants">Restaurants</a>
+        </div>
         @auth('web')
             <div class="ml-2">
-                <a href="/edit" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded"> {{auth()->user()->name}} </a>
+                <a href="/bookings" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded"> View Bookings </a>
             </div>
 
             <div class="ml-2">
-                <a href="/bookings" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded"> View Bookings </a>
+                <a href="/edit" type="button" class="bg-white hover:bg-gray-100 text-black py-1 px-2 rounded"> {{auth()->user()->name}} </a>
             </div>
             
             <div class="ml-2">

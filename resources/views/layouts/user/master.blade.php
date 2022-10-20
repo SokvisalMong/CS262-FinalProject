@@ -14,7 +14,9 @@
     
     @include('layouts.components.alert')
     @include('layouts.user.navbar')
+    
     @yield('content')
+
     @include('layouts.user.footer')
     
 </body>
