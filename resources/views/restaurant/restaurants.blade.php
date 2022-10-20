@@ -11,7 +11,7 @@
     <div class="flex">
         @include('layouts.components.filter')
         <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5"> 
-
+            @unless($restaurants->isEmpty())
             @foreach($restaurants as $restaurant)
             <div>
                 <div class="flex px-8 pt-4 ">
@@ -21,7 +21,7 @@
                             @if($restaurant->picture == NULL)
                             <img src="{{asset('/pictures/no-image.png')}}" alt="no-picture" class="h-60 w-screen">
                             @else
-                            <img src="{{'storage/'. $restaurant->picture}}" alt="restaurant-img" class="h-60 w-screen">
+                            <img src="{{asset('storage/'. $restaurant->picture)}}" alt="restaurant-img" class="h-60 w-screen">
                             @endif
                         </div>
 
@@ -41,7 +41,11 @@
                 </div>
             </div>
             @endforeach
-
+            @else
+            <div>
+                <p>Result not found.</p>
+            </div>
+            @endunless
         </div>
 
     </div>

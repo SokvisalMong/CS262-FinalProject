@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
 <div class="mx-20 mt-14">
     <h1 class="text-center text-4xl pb-8 text-black"> Booking List</h1>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -75,5 +76,6 @@
         @endunless
         </tbody>
     </table>
+
 </div> 
 @stop

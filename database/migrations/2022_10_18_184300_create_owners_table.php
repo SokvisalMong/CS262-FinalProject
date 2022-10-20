@@ -28,8 +28,8 @@ return new class extends Migration
         });
 
         DB::table('owners')->insert([[
-            'name' => 'owner',
-            'email' => 'owner@email.com',
+            'name' => 'Chris',
+            'email' => 'chris@mcdonalds.com',
             'password' => bcrypt('password'),
         ]]);
     }
