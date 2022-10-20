@@ -50,7 +50,7 @@ class RestaurantController extends Controller
 
         $formFields['owner_id'] = auth('owner')->id();
 
-        $restaurant = Restaurant::create($formFields);
+        Restaurant::create($formFields);
 
         return redirect('/')->with('message', 'Restaurant has been created');
     }
