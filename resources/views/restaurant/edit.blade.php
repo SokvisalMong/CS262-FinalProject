@@ -75,7 +75,7 @@
                 <p class="inline-block text-lg mb-2">Dress Code</p><br>
                 {{-- <label for="dress_code" class="inline-block text-lg mb-2"> Dress Code</label>
                 <input type="text" name="dress_code" value="{{$restaurant->dress_code}}" class="border border-gray-200 rounded p-2 w-full"> --}}
-                <input type="checkbox" name="casual" value="Casual" @if (old($restaurant->dress_code) == "Casual") checked @endif>
+                <input type="checkbox" name="casual" value="Casual">
                 <label for="casual" >Casual</label>
 
                 <input type="checkbox" name="b_casual" value="Business Casual" >
