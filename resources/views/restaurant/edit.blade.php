@@ -72,7 +72,8 @@
             </div>  
 
             <div>
-                <p class="inline-block text-lg mb-2">Dress Code</p><br>
+                
+                <p class="inline-block text-lg mb-2 text-black">Dress Code</p><br>
                 {{-- <label for="dress_code" class="inline-block text-lg mb-2"> Dress Code</label>
                 <input type="text" name="dress_code" value="{{$restaurant->dress_code}}" class="border border-gray-200 rounded p-2 w-full"> --}}
                 <input type="checkbox" name="casual" value="Casual">
