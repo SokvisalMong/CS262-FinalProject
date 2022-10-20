@@ -1,4 +1,4 @@
-<div class="flex-col text-white bg-gray-500 py-10">
+<div class="flex-col text-white bg-gray-500 py-11">
     {{-- big text --}}
     <div class="font-bold text-center text-6xl py-5"> 
         Book your table for any occasion
