@@ -13,6 +13,10 @@ class RestaurantController extends Controller
         return view('restaurant.edit', ['restaurant' => $restaurant]);
     }
 
+    public function create() {
+        return view('restaurant.create');
+    }
+
     public function show(Restaurant $restaurant) {
         return view('restaurant.show', ['restaurant' => $restaurant]);
     }
