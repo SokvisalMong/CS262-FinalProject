@@ -8,13 +8,13 @@
 
     {{-- script --}}
     <script defer src="https://unpkg.com/alpinejs"></script>
+    
 </head>
-<body class="font-sans h-full">
+<body class="flex flex-col min-h-screen">
     
     @include('layouts.components.alert')
     @include('layouts.user.navbar')
     @yield('content')
-    
     @include('layouts.user.footer')
     
 </body>

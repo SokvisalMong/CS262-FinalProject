@@ -20,8 +20,20 @@
             </div>
 
             <div class="mb-6">
-                <label for="payment" class="inline-block text-lg mb-2"> Payment </label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="payment" />
+                <p class="inline-block text-lg mb-2">Payment</p><br>
+                {{-- <label for="payment" class="inline-block text-lg mb-2"> Payment </label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="payment" /> --}}
+                <input type="checkbox" name="payment" value="Cash" >
+                <label for="payment" >Cash</label>
+
+                <input type="checkbox" name="payment" value="Visa" >
+                <label for="payment" >Visa</label>
+
+                <input type="checkbox" name="payment" value="Mastercard" >
+                <label for="payment" >Mastercard</label>
+
+                <input type="checkbox" name="payment" value="ABA" >
+                <label for="payment" >ABA</label>
 
                 @error('payment')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -38,18 +50,45 @@
             </div>
 
             <div class="mb-6">
-                <label for="cuisines" class="inline-block text-lg mb-2"> Cuisines </label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="cuisines"/>
+                <p class="inline-block text-lg mb-2">Cuisines</p><br>
+                {{-- <label for="cuisines" class="inline-block text-lg mb-2"> Cuisines</label>
+                <input type="text" name="cuisines" value="{{$restaurant->cuisines}}" class="border border-gray-200 rounded p-2 w-full"> --}}
+                <input type="checkbox" name="cuisines" value="Khmer" >
+                <label for="cuisines" >Khmer</label>
 
+                <input type="checkbox" name="cuisines" value="Western" >
+                <label for="cuisines" >Western</label>
+
+                <input type="checkbox" name="cuisines" value="Chinese" >
+                <label for="cuisines" >Chinese</label>
+
+                <input type="checkbox" name="cuisines" value="Vietnamese" >
+                <label for="cuisines" >Vietnamese</label>
+
+                <input type="checkbox" name="cuisines" value="International" >
+                <label for="cuisines" >International</label>
                 @error('cuisines')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
             </div>
 
             <div class="mb-6">
-                <label for="dress_code" class="inline-block text-lg mb-2"> Dress Code </label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="dress_code"/>
+                {{-- <label for="dress_code" class="inline-block text-lg mb-2"> Dress Code</label>
+                <input type="text" name="dress_code" value="{{$restaurant->dress_code}}" class="border border-gray-200 rounded p-2 w-full"> --}}
+                <input type="checkbox" name="dress_code" value="Casual" >
+                <label for="dress_code" >Casual</label>
 
+                <input type="checkbox" name="dress_code" value="Business Casual" >
+                <label for="dress_code" >Business Casual</label>
+
+                <input type="checkbox" name="dress_code" value="Casual Elegant" >
+                <label for="dress_code" >Casual Elegant</label>
+
+                <input type="checkbox" name="dress_code" value="Formal" >
+                <label for="dress_code" >Formall</label>
+
+                <input type="checkbox" name="dress_code" value="Jacket" >
+                <label for="dress_code" >Jacket</label>
                 @error('dress_code')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror

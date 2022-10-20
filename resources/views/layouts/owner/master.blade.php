@@ -17,7 +17,7 @@
             
         </div>
     @else
-        <div class="h-full">
+        <div class="flex flex-col min-h-screen">
             @include('layouts.components.alert')
             @include('layouts.owner.navbar')
             @yield('content')
