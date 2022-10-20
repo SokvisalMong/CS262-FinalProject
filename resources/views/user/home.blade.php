@@ -20,7 +20,8 @@
               <p class="text-gray-700 text-base text-center py-1">
                 023 996 111
               </p>
-          </div>
+            </div>
+        </div>
     </div>
 </div>
 @stop
