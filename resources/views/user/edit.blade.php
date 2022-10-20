@@ -47,7 +47,7 @@
                     @enderror
                 </div>
 
-                <div class="mb-6">
+                <div class="mb-6 pb-28">
                     <a href="/" type="button" class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">Cancel</a>
                     <button class="bg-gray-800 text-white rounded py-2 px-4 hover:bg-black">Update</button>
                 </div>

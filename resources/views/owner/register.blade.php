@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="bg-gray-50 border border-gray-200 rounded p-6 pb-8">
+<div class="bg-gray-50 border border-gray-200 rounded p-6 pb-4">
     <div class="p-10 max-w-lg mx-auto mt-10">
         <h1 class="text-center text-4xl pb-8">Sign Up</h1>
         <form method="POST" action="/owners">
