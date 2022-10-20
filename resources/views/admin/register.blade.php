@@ -5,8 +5,9 @@
 @endsection
 
 @section('content')
-<div>
+<div class="mx-auto pt-32">
     <form method="POST" action="/admins">
+        <h1 class="text-center font-bold text-3xl pb-4">Add another admin</h1>
         @csrf
         <div class="mb-6">
             <label for="name" class="inline-block test-lg mb-2"> Name </label>
