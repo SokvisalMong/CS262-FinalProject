@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div class="w-full my-auto">
-    <div class="flex justify-center bg-cover">
+<div class="w-full my-auto flex justify-center">
+    <div class="bg-cover max-w-7xl mx-auto">
         @if($restaurant->picture == NULL)
         <img src="{{asset('/pictures/no-image.png')}}" alt="no-picture">
         @else
