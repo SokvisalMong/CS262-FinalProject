@@ -49,7 +49,7 @@
                     <label>Jacket</label>
                 </div>
             </div>
-            <button type="submit" class="border-2 border-blue-300 px-4 rounded">
+            <button type="submit" class="border-2 border-blue-300 px-4 rounded hover:bg-blue-300">
                 Search
             </button>
         </div>
