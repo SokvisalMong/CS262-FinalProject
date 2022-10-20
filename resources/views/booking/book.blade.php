@@ -2,7 +2,7 @@
 
 @section('content')
     
-<div>
+<div class="mx-96 mt-32 text-black">
     <form method="POST" action="/bookings/create/{{$restaurant->id}}">
         @csrf
         <div class="mb-6">

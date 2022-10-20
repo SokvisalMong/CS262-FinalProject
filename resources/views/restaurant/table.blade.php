@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="mx-20 mt-14">
+<div class="mx-auto">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-ms text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -42,9 +42,9 @@
                 <th scope="col" class="py-6 px-9">
                     Email
                 </th>
-                <th scope="col" class="py-6 px-9">
+                {{-- <th scope="col" class="py-6 px-9">
                     Description
-                </th>
+                </th> --}}
                 <th scope="col" class="py-6 px-9">
                     Delete
                 </th>
@@ -65,7 +65,7 @@
                 <td class="py-6 px-9">{{$restaurant->website}}</td>
                 <td class="py-6 px-9">{{$restaurant->phone}}</td>
                 <td class="py-6 px-9">{{$restaurant->email}}</td>
-                <td class="py-6 px-9">{{$restaurant->description}}</td>
+                {{-- <td class="py-6 px-9">{{$restaurant->description}}</td> --}}
                 <td class="py-6 px-9">
                     <form method="POST" action="/restaurants/{{$restaurant->id}}">
                         @csrf

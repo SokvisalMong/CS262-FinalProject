@@ -5,9 +5,10 @@
 @endsection
 
 @section('content')
-<div class="mx-20 mt-14 text-white">
+<div class="mx-auto text-black w-full">
     <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <div>
+            @unless($bookings->isEmpty())
             <table>
                 <thead>
                     <tr>
@@ -20,7 +21,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @unless($bookings->isEmpty())
                     @foreach($bookings as $booking)
                     <tr>
                         <td>{{$booking->restaurant()->first()->name}}</td>
@@ -46,12 +46,12 @@
                     @else
                     <tr>
                         <td>
-                            <p>No Bookings Found.</p>
+                            <p class="text-black text-2xl">No Bookings Found.</p>
                         </td>
                     </tr>
-                    @endunless
                 </tbody>
             </table>
+            @endunless
         </div>
     </div> 
 </div>
