@@ -1,8 +1,14 @@
 @extends('layouts.user.master')
 
+@section('title')
+{{'Booking'}}
+@endsection
+
 @section('content')
+
     
-<div class="mx-96 mt-32 text-black">
+<div class="px-96 mx-96 mt-32 text-black">
+    <h1 class="text-center text-4xl pb-8" id="restaurant_name">Booking {{$restaurant->name}}</h1>
     <form method="POST" action="/bookings/create/{{$restaurant->id}}">
         @csrf
         <div class="mb-6">

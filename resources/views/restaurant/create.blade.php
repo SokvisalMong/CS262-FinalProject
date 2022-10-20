@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div class="bg-gray-50 border border-gray-200 rounded p-6">
-    <div class="p-10 max-w-lg mx-auto mt-10">
+<div class="bg-gray-50 border border-gray-200 rounded px-20 my-auto mx-auto">
+    <div class="max-w-lg mx-auto rounded-3x1 pt-6">
         <h1 class="text-center text-4xl pb-8">Create Restaurant</h1>
         <form method="POST" action="/restaurants" enctype="multipart/form-data">
             @csrf
@@ -73,6 +73,7 @@
             </div>
 
             <div class="mb-6">
+                <p class="inline-block text-lg mb-2">Dress Code</p><br>
                 {{-- <label for="dress_code" class="inline-block text-lg mb-2"> Dress Code</label>
                 <input type="text" name="dress_code" value="{{$restaurant->dress_code}}" class="border border-gray-200 rounded p-2 w-full"> --}}
                 <input type="checkbox" name="casual" value="Casual">

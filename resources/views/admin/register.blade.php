@@ -28,15 +28,6 @@
         </div>
 
         <div class="mb-6">
-            <label for="mobile" class="inline-block test-lg mb-2"> Phone Number </label>
-            <input type="tel" class="border border-gray-200 rounded p-2 w-full" name="phone" value="{{old('phone')}}"/>
-        
-            @error('phone')
-                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-            @enderror
-        </div>
-
-        <div class="mb-6">
             <label for="password" class="inline-block text-lg mb-2"> Password </label>
             <input type="password" class="border border-gray-200 rounded p-2 w-full" name="password" value="{{old('password')}}"/>
       

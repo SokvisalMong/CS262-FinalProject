@@ -80,7 +80,7 @@ class UserController extends Controller
         /** @var \App\Models\User $user **/
         $user->save();
         
-        return back()->with('message', 'User account has been updated.');
+        return redirect('/')->with('message', 'User account has been updated.');
     }
 
     public function logout(Request $request) {

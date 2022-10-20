@@ -61,7 +61,7 @@ class BookingController extends Controller
     }
 
     public function ownerCancel(Booking $booking) {
-        $owner_id = $booking->restaurant()->first()->id;
+        $owner_id = $booking->restaurant()->first()->owner()->first()->id;
 
         if(auth('owner')->id() != $owner_id) {
             abort(403, 'Unauthorized Action');
@@ -75,7 +75,7 @@ class BookingController extends Controller
     }
 
     public function complete(Booking $booking) {
-        $owner_id = $booking->restaurant()->first()->id;
+        $owner_id = $booking->restaurant()->first()->owner()->first()->id;
 
         if(auth('owner')->id() != $owner_id) {
             abort(403, 'Unauthorized Action');
