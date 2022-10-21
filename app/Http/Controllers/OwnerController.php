@@ -8,19 +8,19 @@ use Illuminate\Validation\Rule;
 
 class OwnerController extends Controller
 {
-    // Pages
+    // owner home page
     public function home() {
         return view('owner.home');
     }
-
+    // owner login page
     public function login() {
         return view('owner.login');
     }
-
+    // owner register page
     public function register() {
         return view('owner.register');
     }
-
+    // function to store owner register info
     public function store(Request $request) {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
@@ -36,7 +36,7 @@ class OwnerController extends Controller
 
         return redirect('/')->with('message', 'Owner created and logged in.');
     }
-
+    // authentication for owner login
     public function authenticate(Request $request) {
         $formFields = $request->validate([
             'email' => ['required', 'email'],
@@ -51,7 +51,7 @@ class OwnerController extends Controller
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
-
+    // owner logout function
     public function logout(Request $request) {
         auth('owner')->logout();
 
@@ -60,13 +60,14 @@ class OwnerController extends Controller
 
         return redirect('/')->with('message', 'You have been logged out.');
     }
-
+    // owner table list
     public function showtable() {
         $owner_db = Owner::all();
 
         return view('owner.table', ["v_owner" => $owner_db]);
     }
 
+    // delete owner account
     public function destroy(Owner $owner) {
         $owner->delete();
 

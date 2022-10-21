@@ -27,6 +27,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // default admin
         DB::table('admins')->insert([[
             'name' => 'admin',
             'email' => 'admin@email.com',

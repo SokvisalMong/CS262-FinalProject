@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    // Pages
+    // Show user bookings page in user domain
     public function show() {
         /** @var \App\Models\User $user **/
         $user = auth('web')->user();
@@ -19,6 +19,8 @@ class BookingController extends Controller
         return view('booking.bookings', ['bookings' => $bookings]);        
     }
 
+    // first() only return one record, get() returns an array of records
+    // show bookings for restaurants in owner domain
     public function getRestaurantBooking() {
         /** @var \App\Models\Owner $owner */
         $owner = auth('owner')->user();
@@ -29,9 +31,8 @@ class BookingController extends Controller
         return view('booking.ownertable', ['bookings' => $bookings]);
     }
 
+    // store booking function
     public function store(Request $request, Restaurant $restaurant) {    
-        // dd($request['date']);
-        
         $formFields = $request->validate([
             'status' => 'nullable',
             'date' => ['required'],
@@ -48,6 +49,7 @@ class BookingController extends Controller
         return redirect('/bookings')->with('message', 'Booking has been created.');
     }
 
+    // function to update status to Canceled for users
     public function cancel(Booking $booking) {
         if(auth()->id() != $booking->user_id) {
             abort(403, 'Unauthorized Action');
@@ -60,6 +62,7 @@ class BookingController extends Controller
         return back()->with('message', 'Booking has been canceled.');
     }
 
+    // function to update status to Canceled for restaurant owners
     public function ownerCancel(Booking $booking) {
         $owner_id = $booking->restaurant()->first()->owner()->first()->id;
 
@@ -74,6 +77,7 @@ class BookingController extends Controller
         return back()->with('message', 'Booking has been canceled.');
     }
 
+    // function to update status to complete for restaurant owners
     public function complete(Booking $booking) {
         $owner_id = $booking->restaurant()->first()->owner()->first()->id;
 
@@ -88,13 +92,13 @@ class BookingController extends Controller
         return back()->with('message', 'Booking has been completed');
     }
 
-
+    // function to show booking data in table
     public function showtable() {
         $booking_db = Booking::all();
 
         return view('booking.table', ["v_booking" => $booking_db]);
     }
-
+    // function to delete booking data, one row
     public function destroy(Booking $booking) {
         $booking->delete();
 

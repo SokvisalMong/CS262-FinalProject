@@ -27,6 +27,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // default owner
         DB::table('owners')->insert([[
             'name' => 'Chris',
             'email' => 'chris@mcdonalds.com',
