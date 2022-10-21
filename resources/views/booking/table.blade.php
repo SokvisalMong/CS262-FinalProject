@@ -13,10 +13,10 @@
                     ID
                 </th>
                 <th scope="col" class="py-7 px-14">
-                    Rest_ID
+                    Rest Name
                 </th>
                 <th scope="col" class="py-7 px-14">
-                    User_ID
+                    User Name
                 </th>
                 <th scope="col" class="py-7 px-14">
                     Status
@@ -39,8 +39,8 @@
             @foreach ($v_booking as $booking)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td scope="row" class="py-7 px-14 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$booking->id}}</td>
-                    <td class="py-7 px-14">{{$booking->restaurant_id}}</td>
-                    <td class="py-7 px-14">{{$booking->user_id}}</td>
+                    <td class="py-7 px-14">{{$booking->restaurant()->first()->name}}</td>
+                    <td class="py-7 px-14">{{$booking->user()->first()->name}}</td>
                     <td class="py-7 px-14">{{$booking->status}}</td>
                     <td class="py-7 px-14">{{$booking->date}}</td>
                     <td class="py-7 px-14">{{$booking->time}}</td>
