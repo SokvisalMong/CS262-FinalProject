@@ -6,15 +6,19 @@
 - Rithy Phal
 - Sokvisal Mong
 
-## How to build tailwindcss
+## Running the application
 
-Build dependencies
+### To run with sail
 
-```./vendor/bin/sail npm ci```
+```
+./vendor/bin/sail up -d
+```
 
-Run Vite?
+### To run with artisan only
 
-```./vendor/bin/sail npm run dev```
+```
+php artisan serve --host=localhost
+```
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
