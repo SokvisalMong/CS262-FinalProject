@@ -25,7 +25,7 @@ class Restaurant extends Model
         'email',
         'picture'
     ];
-
+    // in restaurant list, the option to filter restaurant using radios. user can select many options at the same time
     public function scopeFilter($query, array $filters) {
         if($filters['cuisines'] ?? false) {
             $query->where('cuisines', 'like', '%'. request('cuisines') . '%');

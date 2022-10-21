@@ -39,6 +39,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // default restaurant we use as an example
         DB::table('restaurants')->insert([[
             'owner_id' => 1,
             'name' => 'McDonalds',

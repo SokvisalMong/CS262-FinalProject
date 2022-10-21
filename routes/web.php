@@ -19,20 +19,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Redirects non subdomain url to www subdomain
+// In this website, We have 3 seperate domains for user, admin, and restaurant owner
+
+// Redirects non subdomain url to www subdomain // when someome doesnt specify their domain name, they will be redirect to user domain
 Route::domain(env('APP_URL'))->group(function() {
     Route::get('/', function() {
         return redirect('http://www.' .env('APP_URL'));
     });
 });
 
-// User pages
+// User Domain
 Route::domain('www.' .env('APP_URL'))->group(function () {
-    // Index page
+    // Home page
     Route::get('/', [UserController::class, 'home']);
-
-    // About us page
-    Route::get('/aboutus', [UserController::class, 'aboutUs']);
 
     // List of restaurants for users to choose from page
     Route::get('/restaurants', [RestaurantController::class, 'showAll']);
@@ -81,7 +80,7 @@ Route::domain('www.' .env('APP_URL'))->group(function () {
     });
 });
 
-// Owner pages
+// Owner domain
 Route::domain('owner.' .env('APP_URL'))->group(function () {
     Route::get('/', [OwnerController::class, 'home']);
 
@@ -123,7 +122,7 @@ Route::domain('owner.' .env('APP_URL'))->group(function () {
     });
 });
 
-// Admin pages
+// Admin domain
 Route::domain('admin.' .env('APP_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'home']);
 

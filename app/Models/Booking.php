@@ -18,7 +18,8 @@ class Booking extends Model
         'time',
         'size'
     ];
-
+    
+    // defining relationships
     public function restaurant() {
         return $this->belongsTo(Restaurant::class);
     }

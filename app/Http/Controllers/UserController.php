@@ -8,25 +8,21 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    // Pages
+    // user page
     public function home() {
         return view('user.home');
     }
-
+    // user login page
     public function login() {
         return view('user.login');
     }
-
+    // user register page
     public function register() {
         return view('user.register');
     }
-
+    // user edit info page
     public function edit() {
         return view('user.edit')->with('user', auth()->user());
-    }
-
-    public function aboutUs() {
-        return view('user.aboutus');
     }
 
     // Creates a user account and logs them in immediately
@@ -46,7 +42,7 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'User created and logged in.');
     }
-
+    // user logoin authentication
     public function authenticate(Request $request) {
         $formFields = $request->validate([
             'email' => ['required', 'email'],
@@ -61,7 +57,7 @@ class UserController extends Controller
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
-
+    // user update info function
     public function update(Request $request) {
         $user = auth()->user();
 
@@ -76,7 +72,7 @@ class UserController extends Controller
         $user->phone     = $request->phone;
         $user->firstname = $request->firstname;
         $user->lastname  = $request->lastname;
-
+        // save new info into user model to db
         /** @var \App\Models\User $user **/
         $user->save();
         
@@ -91,13 +87,13 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'You have been logged out');
     }
-
+    // show all user in list
     public function showtable() {
         $user_db = User::all();
 
         return view('user.table', ["v_user" => $user_db]);
     }
-
+    // delete an user account
     public function destroy(User $user) {
         $user->delete();
 
